@@ -1,6 +1,8 @@
 package com.maxqiu.demo.CompareAndSwap;
 
 /**
+ * 模拟 CAS 算法
+ * 
  * @author Max_Qiu
  */
 public class CompareAndSwap {

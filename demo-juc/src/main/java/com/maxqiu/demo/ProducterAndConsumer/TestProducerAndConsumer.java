@@ -1,6 +1,8 @@
 package com.maxqiu.demo.ProducterAndConsumer;
 
 /**
+ * 生产者和消费者案例
+ * 
  * @author Max_Qiu
  */
 public class TestProducerAndConsumer {
