@@ -1,0 +1,26 @@
+@startuml
+class Person {
+    - id : Integer
+    + getId()
+    + setId(id:Integer)
+}
+
+Person2 : - id
+Person2 : + getId()
+Person2 : + setId(id:Integer)
+
+interface UserService {
+    {abstract} + save()
+}
+
+abstract BaseController{
+    {abstract} + absMethod()
+    + normalMethod()
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+@enduml

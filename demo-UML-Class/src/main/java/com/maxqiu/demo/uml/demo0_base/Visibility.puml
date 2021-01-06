@@ -1,0 +1,12 @@
+@startuml
+class Visibility {
+    - field1 : String
+    # field2 : String
+    ~ field3 : String
+    + field4 : String
+    - void method1()
+    # void method2()
+    ~ void method3()
+    + void method4()
+}
+@enduml

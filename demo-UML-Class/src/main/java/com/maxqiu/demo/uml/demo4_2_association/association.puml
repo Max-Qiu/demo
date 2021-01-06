@@ -1,0 +1,7 @@
+@startuml
+class IdCard {
+}
+class Person {
+}
+IdCard "1" <--> "1" Person
+@enduml

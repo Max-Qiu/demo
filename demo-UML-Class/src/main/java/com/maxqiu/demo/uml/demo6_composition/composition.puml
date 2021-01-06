@@ -1,0 +1,15 @@
+@startuml
+class Computer {
+    + setMonitor()
+    + setMouse()
+}
+class Cpu {
+}
+class Monitor {
+}
+class Mouse {
+}
+Computer *-- Cpu
+Computer o-- Monitor
+Computer o-- Mouse
+@enduml

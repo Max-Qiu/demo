@@ -1,0 +1,9 @@
+@startuml
+interface PersonService {
+    {abstract} + delete()
+}
+class PersonServiceImpl {
+    + delete()
+}
+PersonServiceImpl .up.|> PersonService
+@enduml
