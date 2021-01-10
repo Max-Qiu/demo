@@ -1,0 +1,33 @@
+@startuml
+interface VehicleInterface {
+    {abstract} + carryGoods()
+}
+class AirPilot {
+    + carryGoods()
+    + runningInTheSky()
+}
+class C919Plane {
+    + carryGoods()
+    + runningInTheSky()
+}
+class Captain {
+    + carryGoods()
+    + runningOnWater()
+}
+interface PlaneInterface {
+    {abstract} + runningInTheSky()
+}
+interface Steamship {
+    {abstract} + runningOnWater()
+}
+class Titanic {
+    + carryGoods()
+    + runningOnWater()
+}
+VehicleInterface <-- PlaneInterface
+VehicleInterface <-- Steamship
+PlaneInterface <.. AirPilot
+PlaneInterface <|.. C919Plane
+Steamship <.. Captain
+Steamship <|.. Titanic
+@enduml

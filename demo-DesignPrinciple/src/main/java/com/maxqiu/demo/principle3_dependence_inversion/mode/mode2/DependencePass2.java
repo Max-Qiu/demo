@@ -25,7 +25,7 @@ interface IOpenAndClose {
 
 class OpenAndClose implements IOpenAndClose {
     // 成员变量
-    public ITv tv;
+    private ITv tv;
 
     // 构造器
     public OpenAndClose(ITv tv) {

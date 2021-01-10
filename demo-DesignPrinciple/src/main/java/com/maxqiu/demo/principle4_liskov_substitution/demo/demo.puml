@@ -1,0 +1,10 @@
+@startuml
+class ClassA {
+    + func1(a:int,b:int)
+}
+class ClassB {
+    + func1(a:int,b:int)
+    + func2(a:int,b:int)
+}
+ClassA <|-- ClassB
+@enduml

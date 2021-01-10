@@ -1,0 +1,7 @@
+@startuml
+class Vehicle {
+    + run(vehicle:String)
+    + runAir(vehicle:String)
+    + runWater(vehicle:String)
+}
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+class Circle {
+    + Circle()
+    + draw()
+}
+class GraphicEditor {
+    + drawShape()
+}
+class Rectangle {
+    + Rectangle()
+    + draw()
+}
+abstract class Shape {
+    - type : int
+    {abstract} + draw()
+    + getType()
+    + setType()
+}
+class Triangle {
+    + Triangle()
+    + draw()
+}
+Circle -up-|> Shape
+Rectangle -up-|> Shape
+Triangle -up-|> Shape
+Shape <.up. GraphicEditor
+@enduml

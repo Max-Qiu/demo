@@ -1,0 +1,18 @@
+@startuml
+class ChangHongTv {
+    + play()
+}
+interface ITv {
+    {abstract} + play()
+}
+ChangHongTv ..|> ITv
+interface IOpenAndClose {
+    {abstract} + open(tv:ITv)
+}
+class OpenAndClose {
+    + open(tv:ITv)
+}
+IOpenAndClose <|.. OpenAndClose
+ITv <.. IOpenAndClose
+ITv <.. OpenAndClose
+@enduml

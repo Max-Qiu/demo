@@ -1,0 +1,5 @@
+@startuml
+class Vehicle {
+    + run(vehicle:String) void
+}
+@enduml

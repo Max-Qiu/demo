@@ -24,15 +24,23 @@ class GraphicEditor {
 
 // Shape类，基类
 abstract class Shape {
-    int type;
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     // 抽象方法
     public abstract void draw();
 }
 
 class Rectangle extends Shape {
-    Rectangle() {
-        super.type = 1;
+    public Rectangle() {
+        setType(1);
     }
 
     @Override
@@ -42,8 +50,8 @@ class Rectangle extends Shape {
 }
 
 class Circle extends Shape {
-    Circle() {
-        super.type = 2;
+    public Circle() {
+        setType(2);
     }
 
     @Override
@@ -54,8 +62,8 @@ class Circle extends Shape {
 
 // 新增画三角形
 class Triangle extends Shape {
-    Triangle() {
-        super.type = 3;
+    public Triangle() {
+        setType(3);
     }
 
     @Override

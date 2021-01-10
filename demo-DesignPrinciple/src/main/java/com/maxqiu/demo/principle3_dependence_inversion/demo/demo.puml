@@ -1,0 +1,9 @@
+@startuml
+class EmailMessage {
+    + printInfo()
+}
+class Person {
+    + receiveMessage(message:EmailMessage)
+}
+EmailMessage <.. Person
+@enduml

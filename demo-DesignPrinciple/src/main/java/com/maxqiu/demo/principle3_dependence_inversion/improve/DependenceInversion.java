@@ -43,7 +43,7 @@ class WeiXinMessage implements IMessage {
 
 class Person {
     // 依赖接口
-    public void receive(IMessage receiver) {
-        System.out.println(receiver.printInfo());
+    public void receive(IMessage message) {
+        System.out.println(message.printInfo());
     }
 }

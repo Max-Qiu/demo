@@ -1,0 +1,11 @@
+@startuml
+class AirVehicle {
+    + run(vehicle:String)
+}
+class RoadVehicle {
+    + run(vehicle:String)
+}
+class WaterVehicle {
+    + run(vehicle:String)
+}
+@enduml

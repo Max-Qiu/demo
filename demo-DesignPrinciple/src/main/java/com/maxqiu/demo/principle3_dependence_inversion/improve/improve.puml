@@ -1,0 +1,17 @@
+@startuml
+interface IMessage {
+    {abstract} + printInfo()
+}
+class Person {
+    + receive(message:IMessage)
+}
+class WeiXinMessage {
+    + printInfo()
+}
+class EmailMessage {
+    + printInfo()
+}
+IMessage <.up. Person
+IMessage <|.. EmailMessage
+IMessage <|.. WeiXinMessage
+@enduml

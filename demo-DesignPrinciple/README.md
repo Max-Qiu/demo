@@ -2,6 +2,10 @@
 
 [尚硅谷_图解Java设计模式](http://www.atguigu.com/download_detail.shtml?v=202)
 
+> 示例代码：
+GitHub：[https://github.com/Max-Qiu/demo/tree/main/demo-DesignPrinciple](https://github.com/Max-Qiu/demo/tree/main/demo-DesignPrinciple)
+Gitee：[https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPrinciple](https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPrinciple)
+
 # 设计原则核心思想
 
 1. 找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混在一起。
@@ -15,6 +19,8 @@
 如类A负责两个不同职责：职责1，职责2。当职责1需求变更而改变A时，可能造成职责2执行错误，所以需要将类A的粒度分解为A1、A2。
 
 ## 问题示例
+
+![](https://cdn.maxqiu.com/upload/52473f148ad644698d659ef9a72cee9c.jpg)
 
 ```java
 /**
@@ -46,6 +52,8 @@ public static void main(String[] args) {
 
 ## 改进方案1
 
+![](https://cdn.maxqiu.com/upload/1403f919393d4bc8bd14839a35ef4ffd.jpg)
+
 ```java
 class RoadVehicle {
     public void run(String vehicle) {
@@ -64,7 +72,6 @@ class WaterVehicle {
         System.out.println(vehicle + "水中运行");
     }
 }
-
 ```
 
 ```java
@@ -88,6 +95,8 @@ public static void main(String[] args) {
 3. 改进：直接修改类，改动的代码会比较少=>方案2
 
 ## 改进方案2
+
+![](https://cdn.maxqiu.com/upload/c8ce28b0fd8c4b25bd4cf4d339326a03.jpg)
 
 ```java
 class Vehicle {
@@ -126,6 +135,8 @@ public static void main(String[] args) {
 > 客户端不应该依赖它不需要的接口，即**一个类对另一个类的依赖应该建立在最小的接口上**
 
 ## 问题示例
+
+![](https://cdn.maxqiu.com/upload/e96894dc99ad4da1acdff15740e4ae67.jpg)
 
 ```java
 /**
@@ -221,7 +232,6 @@ class Captain {
         i.runningOnWater();
     }
 }
-
 ```
 
 ```java
@@ -247,6 +257,8 @@ public static void main(String[] args) {
 ## 改进方案
 
 按隔离原则应当这样处理：将接口拆分为独立的几个接口（运输工具类、飞机类、轮船类），飞机驾驶员类和船长类分别与他们需要的接口建立依赖关系。也就是采用接口隔离原则
+
+![](https://cdn.maxqiu.com/upload/f7d39d0b8667436abc01e66ddb704ed3.jpg)
 
 ```java
 /**
@@ -364,6 +376,8 @@ public static void main(String[] args) {
 
 ## 问题示例
 
+![](https://cdn.maxqiu.com/upload/43f62225e7654b0ab118732a5a9ae5bb.jpg)
+
 ```java
 /**
  * 电子邮件消息
@@ -402,6 +416,8 @@ public static void main(String[] args) {
 
 ## 改进方案
 
+![](https://cdn.maxqiu.com/upload/6d98c85157c641e2a250a4048cd74186.jpg)
+
 ```java
 /**
  * 消息接口
@@ -432,8 +448,8 @@ class WeiXinMessage implements IMessage {
 
 class Person {
     // 依赖接口
-    public void receive(IMessage receiver) {
-        System.out.println(receiver.printInfo());
+    public void receive(IMessage message) {
+        System.out.println(message.printInfo());
     }
 }
 ```
@@ -454,7 +470,7 @@ public static void main(String[] args) {
 ```java
 /**
  * 电视机接口
- * 
+ *
  * @author Max_Qiu
  */
 public interface ITv {
@@ -466,7 +482,7 @@ public interface ITv {
 
 /**
  * 电视机实例
- * 
+ *
  * @author Max_Qiu
  */
 public class ChangHongTv implements ITv {
@@ -478,6 +494,8 @@ public class ChangHongTv implements ITv {
 ```
 
 ### 接口传递
+
+![](https://cdn.maxqiu.com/upload/2317fac1cfc944789084fd180baba13b.jpg)
 
 ```java
 // 开关的接口
@@ -505,6 +523,8 @@ public static void main(String[] args) {
 
 ### 构造方法传递
 
+![](https://cdn.maxqiu.com/upload/89820e41462043dda7f70c58f282e06d.jpg)
+
 ```java
 interface IOpenAndClose {
     // 抽象方法
@@ -513,7 +533,7 @@ interface IOpenAndClose {
 
 class OpenAndClose implements IOpenAndClose {
     // 成员变量
-    public ITv tv;
+    private ITv tv;
 
     // 构造器
     public OpenAndClose(ITv tv) {
@@ -536,6 +556,8 @@ public static void main(String[] args) {
 ```
 
 ### setter方法传递
+
+![](https://cdn.maxqiu.com/upload/18714b768644426cbd3ec22d434a990f.jpg)
 
 ```java
 interface IOpenAndClose {
@@ -584,6 +606,8 @@ OO中的继承性的思考和说明
 
 ## 问题示例
 
+![](https://cdn.maxqiu.com/upload/78d5e15e63404e1890cd611fd352bc7f.jpg)
+
 ```java
 // A类
 class ClassA {
@@ -624,6 +648,8 @@ public static void main(String[] args) {
 2. 通用的做法是：原来的父类和子类都继承一个更基础的基类，原有的继承关系去掉，采用依赖、聚合、组合等关系代替。
 
 ## 改进方案
+
+![](https://cdn.maxqiu.com/upload/42d9af1cee414ed59f38cd8d32e68798.jpg)
 
 ```java
 // 创建一个更加基础的基类
@@ -682,18 +708,20 @@ public static void main(String[] args) {
 
 ## 问题示例
 
+![](https://cdn.maxqiu.com/upload/a687f73046ef430394a5970f1ff54921.jpg)
+
 ```java
 // 这是一个用于绘图的类[使用方]
 class GraphicEditor {
     // 接收Shape对象，然后根据类型，来绘制不同的图形
     public void drawShape(Shape s) {
-        if (s.type == 1) {
+        if (s.getType() == 1) {
             drawRectangle(s);
-        } else if (s.type == 2) {
+        } else if (s.getType() == 2) {
             drawCircle(s);
         }
         // 新增三角形类型判断
-        else if (s.type == 3) {
+        else if (s.getType() == 3) {
             drawTriangle(s);
         }
     }
@@ -716,25 +744,33 @@ class GraphicEditor {
 
 // Shape类，基类
 class Shape {
-    int type;
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 }
 
 class Rectangle extends Shape {
-    Rectangle() {
-        super.type = 1;
+    public Rectangle() {
+        setType(1);
     }
 }
 
 class Circle extends Shape {
-    Circle() {
-        super.type = 2;
+    public Circle() {
+        setType(2);
     }
 }
 
 // 新增画三角形
 class Triangle extends Shape {
-    Triangle() {
-        super.type = 3;
+    public Triangle() {
+        setType(3);
     }
 }
 ```
@@ -759,6 +795,8 @@ public static void main(String[] args) {
 
 把创建Shape类做成抽象类，并提供一个抽象的draw方法，让子类去实现即可，这样我们有新的图形种类时，只需要让新的图形类继承Shape，并实现draw方法即可，修使用方的代码就不需要修`->`满足了开闭原则
 
+![](https://cdn.maxqiu.com/upload/5b7626ec8bb243c4a425bb82f2fd6590.jpg)
+
 ```java
 // 这是一个用于绘图的类 [使用方]
 class GraphicEditor {
@@ -770,15 +808,23 @@ class GraphicEditor {
 
 // Shape类，基类
 abstract class Shape {
-    int type;
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     // 抽象方法
     public abstract void draw();
 }
 
 class Rectangle extends Shape {
-    Rectangle() {
-        super.type = 1;
+    public Rectangle() {
+        setType(1);
     }
 
     @Override
@@ -788,8 +834,8 @@ class Rectangle extends Shape {
 }
 
 class Circle extends Shape {
-    Circle() {
-        super.type = 2;
+    public Circle() {
+        setType(2);
     }
 
     @Override
@@ -800,8 +846,8 @@ class Circle extends Shape {
 
 // 新增画三角形
 class Triangle extends Shape {
-    Triangle() {
-        super.type = 3;
+    public Triangle() {
+        setType(3);
     }
 
     @Override
@@ -833,7 +879,6 @@ public static void main(String[] args) {
 > 示例代码场景：
 
 有一个学校，下属有总部和各个学院，现要求打印出学校总部员工ID和学院员工的ID
-
 
 ```java
 /**
@@ -930,7 +975,7 @@ public static void main(String[] args) {
 
 在`printAllEmployee()`方法中，CollegeEmployee不是SchoolManager的直接朋友，CollegeEmployee是以局部变量方式出现在SchoolManager中，违反了迪米特法则
 
-## 改机方案
+## 改进方案
 
 ```java
 // 管理学院员工的管理类
@@ -997,6 +1042,6 @@ public static void main(String[] args) {
 }
 ```
 
-# 合成复用原则
+# 合成复用原则 Composite Reuse Principle
 
 > 尽量使用合成/聚合的方式，而不是使用继承
