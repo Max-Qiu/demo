@@ -1,3 +1,5 @@
+> 推荐阅读：[漫画：什么是单例模式？（整合版）](https://mp.weixin.qq.com/s/2UYXNzgTCEZdEfuGIbcczA)
+
 # 简介
 
 采取一定的方法保证在整个的软件系统中，对**某个类只能存在一个对象实例**，并且该类只提供一个取得其对象实例的方法（静态方法）。
@@ -11,7 +13,7 @@ class Singleton {
     private Singleton() {}
 
     // 2. 本类内部创建对象实例
-    private final static Singleton INSTANCE = new Singleton();
+    private static final Singleton INSTANCE = new Singleton();
 
     // 3. 提供一个公有的静态方法，返回实例对象
     public static Singleton getInstance() {
@@ -34,7 +36,7 @@ public static void main(String[] args) {
 
 - 优点：这种写法比较简单，就是在类装载的时候就完成实例化。避免了线程同步问题。
 - 缺点：在类装载的时候就完成实例化，没有达到懒加载的效果。如果从始至终从未使用过这个实例，则会造成内存的浪费
-- 结论：可用，但会造成内存浪费
+- 结论：**推荐使用！**，但会造成内存浪费
 
 # 2. 饿汉式（静态代码块）
 
@@ -167,6 +169,8 @@ public static void main(String[] args) {
 
 # 6. 懒汉式（双重检查）
 
+> 关于为什么要加`volatile`请参考推荐阅读
+
 ```java
 class Singleton {
     private static volatile Singleton instance;
@@ -240,7 +244,7 @@ public static void main(String[] args) {
 类的静态属性只会在第一次加载类的时候初始化，所以在这里JVM帮助我们保证了线程的安全性，在类进行初始化时，别的线程是无法进入的。
 
 - 优点：避免了线程不安全，利用静态内部类特点实现延迟加载，效率高
-- 结论：**推荐使用**
+- 结论：**推荐使用！**
 
 # 8. 枚举
 
@@ -266,11 +270,24 @@ public static void main(String[] args) {
 ```
 
 - 优点：借助JDK1.5中添加的枚举来实现单例模式。不仅能避免多线程同步问题，而且还能防止反序列化重新创建新的对象。
+- 缺点：不是懒加载
 - 结论：**推荐使用**
 
 这种方式是`Effective Java`作者`Josh Bloch`提倡的方式
 
-# 其他
+# 总结
+
+## 对比
+
+> 仅列举推荐使用的
+
+实现方式 | 是否线程安全 | 是否懒加载 | 是否防止反射构建
+---|---|---|---
+饿汉式（静态常量） | T | F | F
+饿汉式（静态代码块） | T | F | F
+懒汉式（双重检查） | T | T | F
+懒汉式（静态内部类） | T | T | F
+枚举 | T | F | T
 
 ## JDK源码示例 Runtime
 
@@ -283,7 +300,7 @@ public class Runtime {
     }
 
     private Runtime() {}
-    
+
     ...
 }
 ```
@@ -297,3 +314,57 @@ public class Runtime {
     2. 创建对象时耗时过多或耗费资源过多(即：重量级对象)，但又经常用到的对象
     3. 工具类对象
     4. 频繁访问数据库或文件的对象(比如数据源、session工厂等)
+
+## 其他
+
+网上有看到一种方式，在构造方法内进行判断是否已经实例化来防止反射，示例如下：
+
+```java
+class Singleton {
+    private static volatile Singleton instance;
+
+    // 添加一个是否已经实例化的判断变量
+    private static volatile boolean created = false;
+
+    private Singleton() {
+        synchronized (Singleton.class) {
+            if (created) {
+                // 如果已经实例化，则抛出异常
+                throw new RuntimeException("单例只能创建一个");
+            } else {
+                // 如果未实例化，则允许
+                created = true;
+            }
+        }
+    }
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+```
+
+但是如果先用了`反射`，那么再调`getInstance()`就会抛出异常，单例的就不能正常使用了。过程如下：
+
+```java
+public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    // 1. 先使用反射
+    // 获得构造器
+    Constructor con = Singleton.class.getDeclaredConstructor();
+    // 设置为可访问
+    con.setAccessible(true);
+    // 构造对象
+    Singleton instance2 = (Singleton)con.newInstance();
+    System.out.println("instance2.hashCode=" + instance2.hashCode());
+    // 2. 再使用普通获取实例的静态方法
+    Singleton instance1 = Singleton.getInstance();
+    System.out.println("instance1.hashCode=" + instance1.hashCode());
+}
+```

@@ -22,7 +22,7 @@ class Singleton {
     private Singleton() {}
 
     // 2. 本类内部创建对象实例
-    private final static Singleton INSTANCE = new Singleton();
+    private static final Singleton INSTANCE = new Singleton();
 
     // 3. 提供一个公有的静态方法，返回实例对象
     public static Singleton getInstance() {
