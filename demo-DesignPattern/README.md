@@ -26,7 +26,7 @@ Gitee：[https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPattern](https://gi
 
 - [单例模式](https://maxqiu.com/article/detail/60)
 - [工厂模式（工厂方法模式/抽象工厂模式）](https://maxqiu.com/article/detail/61)
-- 原型模式
+- [原型模式](https://maxqiu.com/article/detail/62)
 - 建造者模式
 
 ## 结构型模式
