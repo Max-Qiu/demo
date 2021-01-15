@@ -185,7 +185,7 @@ class Singleton {
                     instance = new Singleton();
                 }
             }
-            // 使用如下输出，多次运行可以发现有多个instance = null输出，但是获取的hashCode任然一致
+            // 使用如下输出，多次运行可以发现有多个instance = null输出，但是获取的hashCode仍然一致
             // System.out.println("instance = null");
         }
         return instance;
