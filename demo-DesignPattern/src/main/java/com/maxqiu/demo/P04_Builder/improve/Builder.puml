@@ -1,0 +1,46 @@
+@startuml
+class Client {
+    {static} + main()
+}
+class HighBuildingBuilder {
+    + buildBasic()
+    + buildWalls()
+    + roofed()
+}
+class House {
+    - basic : Integer
+    - roofed : String
+    - wall : Integer
+    + getBasic()
+    + getRoofed()
+    + getWall()
+    + setBasic()
+    + setRoofed()
+    + setWall()
+    + toString()
+}
+abstract class HouseBuilder {
+    {abstract} + buildBasic()
+    + buildHouse()
+    {abstract} + buildWalls()
+    {abstract} + roofed()
+}
+class HouseDirector {
+    + HouseDirector()
+    + constructHouse()
+    + setHouseBuilder()
+}
+class VillaBuilder {
+    + buildBasic()
+    + buildWalls()
+    + roofed()
+}
+HighBuildingBuilder -up-|> HouseBuilder
+HouseBuilder *-right- House : house
+HouseDirector o-- HouseBuilder : houseBuilder
+VillaBuilder -up-|> HouseBuilder
+Client ..> HouseDirector
+Client ..> VillaBuilder
+Client ..> HighBuildingBuilder
+Client ..> House
+@enduml

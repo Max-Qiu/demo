@@ -20,13 +20,15 @@ Gitee：[https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPattern](https://gi
 
 注：不同的书籍上对分类和名称略有差别
 
+> 详细介绍见示例内`README.md`
+
 ## 创建型模式
 
 这一类设计模式的目的是用于创建对象。
 
-- [单例模式](https://maxqiu.com/article/detail/60)
-- [工厂模式（工厂方法模式/抽象工厂模式）](https://maxqiu.com/article/detail/61)
-- [原型模式](https://maxqiu.com/article/detail/62)
+- 单例模式
+- 工厂模式（工厂方法模式/抽象工厂模式）
+- 原型模式
 - 建造者模式
 
 ## 结构型模式
