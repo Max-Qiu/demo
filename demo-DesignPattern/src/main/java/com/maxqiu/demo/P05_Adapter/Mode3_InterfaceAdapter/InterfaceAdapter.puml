@@ -1,0 +1,26 @@
+@startuml
+class Voltage220V {
+    + output220V()
+}
+interface IVoltage {
+    {abstract} + output12V()
+    {abstract} + output5V()
+    {abstract} + output9V()
+}
+abstract class AbsAdapter {
+    + output12V()
+    + output5V()
+    + output9V()
+}
+class MobilePhone {
+    + charging(iVoltage : IVoltage)
+}
+class Client {
+    {static} + main()
+}
+AbsAdapter .up.|> IVoltage
+MobilePhone ..> IVoltage
+Client ..> MobilePhone
+Client ..> Voltage220V
+Client ..> AbsAdapter
+@enduml
