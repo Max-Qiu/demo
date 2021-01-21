@@ -1,0 +1,34 @@
+@startuml
+interface IMessageSender {
+    {abstract} + send(message : String)
+}
+class SmsMsgSender {
+    + send(message : String)
+}
+class EmailMsgSender {
+    + send(message : String)
+}
+abstract class AbsNotification {
+    # sender : IMessageSender
+    + AbsNotification(sender : IMessageSender)
+    {abstract} + notify(message : String)
+}
+class SevereNotification {
+    + SevereNotification(sender : IMessageSender)
+    + notify(message : String)
+}
+class NormalNotification {
+    + NormalNotification(sender : IMessageSender)
+    + notify(message : String)
+}
+class Client {
+    {static} + main()
+}
+EmailMsgSender .up.|> IMessageSender
+SmsMsgSender .up.|> IMessageSender
+AbsNotification o-left- IMessageSender
+SevereNotification -up-|> AbsNotification
+NormalNotification -up-|> AbsNotification
+Client ..> AbsNotification
+Client ..> IMessageSender
+@enduml
