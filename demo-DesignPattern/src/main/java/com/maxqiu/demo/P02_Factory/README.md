@@ -46,9 +46,11 @@ public class LobsterPizza implements IPizza {
 }
 ```
 
-# 简单工厂模式与静态工厂模式
+# 工厂模式 Factory Pattern
 
-## 简单工厂模式
+## 简单工厂模式与静态工厂模式
+
+### 简单工厂模式 Simple Factory Pattern
 
 披萨的种类有很多，商店找了一家工厂进行生产
 
@@ -83,7 +85,7 @@ public static void main(String[] args) {
 }
 ```
 
-## 静态工厂模式
+### 静态工厂模式
 
 > 即：简单工厂的方法修改为静态方法
 
@@ -117,7 +119,7 @@ public static void main(String[] args) {
 }
 ```
 
-## 问题分析
+### 问题分析
 
 - 优点：容易理解
 - 缺点：违反了设计模式的[OCP原则](https://maxqiu.com/article/detail/58#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99%20Open%20Closed%20Principle)
@@ -126,7 +128,7 @@ public static void main(String[] args) {
 
 > 使用工厂方法模式
 
-# 工厂方法模式
+## 工厂方法模式 Factory Method Pattern
 
 商店找到了对应的工厂生产对应的披萨
 
@@ -177,7 +179,7 @@ public static void main(String[] args) {
 }
 ```
 
-# 抽象工厂模式
+## 抽象工厂模式 Abstract Factory Pattern
 
 商店做大了，又需要卖汉堡包
 

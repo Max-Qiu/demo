@@ -2,7 +2,7 @@
 
 # 简介
 
-采取一定的方法保证在整个的软件系统中，对**某个类只能存在一个对象实例**，并且该类只提供一个取得其对象实例的方法（静态方法）。
+单例模式`Singleton Pattern`：采取一定的方法保证在整个的软件系统中，对**某个类只能存在一个对象实例**，并且该类只提供一个取得其对象实例的方法（静态方法）。
 
 # 1. 饿汉式（静态常量）
 
@@ -185,7 +185,7 @@ class Singleton {
                     instance = new Singleton();
                 }
             }
-            // 使用如下输出，多次运行可以发现有多个instance = null输出，但是获取的hashCode仍然一致
+            // 使用如下输出，多次运行可以发现有多个instance = null输出，但是获取的hashCode任然一致
             // System.out.println("instance = null");
         }
         return instance;
