@@ -1,0 +1,14 @@
+@startuml
+abstract class Component{
+    # publicField
+    + publicMethod()
+}
+class Composite{
+    # childNodes : List<Component>
+}
+class Leaf{
+}
+Leaf -up-|> Component
+Composite -up-|> Component
+Component --* Composite
+@enduml

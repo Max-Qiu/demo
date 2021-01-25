@@ -1,0 +1,22 @@
+@startuml
+abstract class HumanResource {
+    # name : String
+    # salary : double
+    + HumanResource()
+    {abstract} + calculateSalary()
+    + getName()
+}
+class Department {
+    # childNodes : List<HumanResource>
+    + Department()
+    + addSubNode()
+    + calculateSalary()
+}
+class Employee {
+    + Employee()
+    + calculateSalary()
+}
+Department -up-|> HumanResource
+Employee -up-|> HumanResource
+HumanResource --* Department
+@enduml
