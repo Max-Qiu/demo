@@ -8,8 +8,8 @@ package com.maxqiu.demo.P07_Decorator;
 public class Espresso extends Goods {
 
     public Espresso() {
-        setDes("意大利咖啡");
-        setPrice(4.0);
+        des = "意大利咖啡";
+        price = 4.0;
     }
 
 }

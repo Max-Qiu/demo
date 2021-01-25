@@ -1,11 +1,9 @@
 @startuml
 abstract class Goods {
-    - des : String
-    - price : Double
+    # des : String
+    # price : Double
     + getDes()
     + getPrice()
-    + setDes()
-    + setPrice()
 }
 class Decaf {
     + Decaf()
@@ -14,7 +12,7 @@ class Espresso {
     + Espresso()
 }
 class Coffee {
-    - goods : Goods
+    # goods : Goods
     + Coffee(goods : Goods)
     + getDes()
     + getPrice()
@@ -25,10 +23,10 @@ class Milk {
 class Caramel {
     + Caramel(coffee : Coffee)
 }
-Milk -up-|> Coffee
-Caramel -up-|> Coffee
-Coffee --|> Goods
-Coffee *-- Goods
 Decaf -up-|> Goods
 Espresso -up-|> Goods
+Coffee --|> Goods
+Coffee *-- Goods
+Milk -up-|> Coffee
+Caramel -up-|> Coffee
 @enduml

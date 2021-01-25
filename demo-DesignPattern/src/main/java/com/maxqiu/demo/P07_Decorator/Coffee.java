@@ -7,14 +7,14 @@ package com.maxqiu.demo.P07_Decorator;
  */
 public class Coffee extends Goods {
 
-    private Goods goods;
+    protected Goods goods;
 
     /**
      * 传入调料或者咖啡豆
      */
     public Coffee(Goods goods) {
-        setDes("打包");
-        setPrice(0.5);
+        des = "打包";
+        price = 0.5;
         this.goods = goods;
     }
 

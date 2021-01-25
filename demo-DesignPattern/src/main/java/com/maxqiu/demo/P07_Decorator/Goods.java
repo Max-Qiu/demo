@@ -1,25 +1,28 @@
 package com.maxqiu.demo.P07_Decorator;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * 商品
  * 
  * @author Max_Qiu
  */
-@Getter
-@Setter
 public abstract class Goods {
 
     /**
      * 描述
      */
-    private String des;
+    protected String des;
 
     /**
      * 价格
      */
-    private Double price;
+    protected Double price;
+
+    public String getDes() {
+        return des;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
 
 }

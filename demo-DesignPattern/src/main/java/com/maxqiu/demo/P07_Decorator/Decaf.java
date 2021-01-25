@@ -8,8 +8,8 @@ package com.maxqiu.demo.P07_Decorator;
 public class Decaf extends Goods {
 
     public Decaf() {
-        setDes("脱因咖啡");
-        setPrice(5.0);
+        des = "脱因咖啡";
+        price = 5.0;
     }
 
 }

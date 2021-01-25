@@ -9,8 +9,8 @@ public class Milk extends Coffee {
 
     public Milk(Coffee coffee) {
         super(coffee);
-        setDes("牛奶");
-        setPrice(1.5);
+        des = "牛奶";
+        price = 1.5;
     }
 
 }

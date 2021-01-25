@@ -9,7 +9,9 @@
 - 原始类
 - 装饰器类
 
-# 情景介绍
+# 示例
+
+> 情景介绍
 
 一家商店售卖咖啡：
 
@@ -25,11 +27,11 @@
 
 > UML类图
 
-![](https://cdn.maxqiu.com/upload/8ca26394f34046ffa7ec4b700c5aea37.jpg)
+![](https://cdn.maxqiu.com/upload/3dfe18be870b4e1d8c699b07b1bc9d80.jpg)
 
 PS：`PlantUML`生成的类图不太好看，直接看`IDEA`生成的：
 
-![](https://cdn.maxqiu.com/upload/94d61d5064fe45a1a52affc0074c1bcf.jpg)
+![](https://cdn.maxqiu.com/upload/154fa9b536664656a1d27512d533d886.jpg)
 
 > 代码实现
 
@@ -37,17 +39,21 @@ PS：`PlantUML`生成的类图不太好看，直接看`IDEA`生成的：
 /**
  * 商品
  */
-@Getter
-@Setter
 public abstract class Goods {
     /**
      * 描述
      */
-    private String des;
+    protected String des;
     /**
      * 价格
      */
-    private Double price;
+    protected Double price;
+    public String getDes() {
+        return des;
+    }
+    public Double getPrice() {
+        return price;
+    }
 }
 ```
 
@@ -57,8 +63,8 @@ public abstract class Goods {
  */
 public class Espresso extends Goods {
     public Espresso() {
-        setDes("意大利咖啡");
-        setPrice(4.0);
+        des = "意大利咖啡";
+        price = 4.0;
     }
 }
 ```
@@ -69,8 +75,8 @@ public class Espresso extends Goods {
  */
 public class Decaf extends Goods {
     public Decaf() {
-        setDes("脱因咖啡");
-        setPrice(5.0);
+        des = "脱因咖啡";
+        price = 5.0;
     }
 }
 ```
@@ -80,13 +86,13 @@ public class Decaf extends Goods {
  * 咖啡
  */
 public class Coffee extends Goods {
-    private Goods goods;
+    protected Goods goods;
     /**
      * 传入调料或者咖啡豆
      */
     public Coffee(Goods goods) {
-        setDes("打包");
-        setPrice(0.5);
+        des = "打包";
+        price = 0.5;
         this.goods = goods;
     }
     @Override
@@ -109,8 +115,8 @@ public class Coffee extends Goods {
 public class Milk extends Coffee {
     public Milk(Coffee coffee) {
         super(coffee);
-        setDes("牛奶");
-        setPrice(1.5);
+        des = "牛奶";
+        price = 1.5;
     }
 }
 ```
@@ -122,8 +128,8 @@ public class Milk extends Coffee {
 public class Caramel extends Coffee {
     public Caramel(Coffee coffee) {
         super(coffee);
-        setDes("焦糖");
-        setPrice(2.0);
+        des = "焦糖";
+        price = 2.0;
     }
 }
 ```
@@ -192,5 +198,3 @@ public class Shop {
 看图理解：
 
 ![](https://cdn.maxqiu.com/upload/afb1a8a085404b27a85fcd2f05ee4c8e.jpg)
-
-关键字：`递归`

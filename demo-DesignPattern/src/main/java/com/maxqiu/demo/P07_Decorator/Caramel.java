@@ -9,8 +9,8 @@ public class Caramel extends Coffee {
 
     public Caramel(Coffee coffee) {
         super(coffee);
-        setDes("焦糖");
-        setPrice(2.0);
+        des = "焦糖";
+        price = 2.0;
     }
 
 }
