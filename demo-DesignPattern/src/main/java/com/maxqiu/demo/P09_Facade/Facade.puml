@@ -1,0 +1,28 @@
+@startuml
+class HomeTheatre {
+    + HomeTheatre()
+    + end()
+    + pause()
+    + play()
+    + ready()
+}
+class Light {
+    + faint()
+    + off()
+    + on()
+}
+class Player {
+    + off()
+    + on()
+    + pause()
+    + play()
+}
+class Projector {
+    + focus()
+    + off()
+    + on()
+}
+HomeTheatre *-- Light : light
+HomeTheatre *-- Player : player
+HomeTheatre *-- Projector : projector
+@enduml
