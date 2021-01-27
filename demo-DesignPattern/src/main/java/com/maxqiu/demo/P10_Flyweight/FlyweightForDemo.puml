@@ -1,0 +1,27 @@
+@startuml
+abstract class WebSite {
+    {abstract} + use()
+}
+class ConcreteWebSite {
+    - type : String
+    + ConcreteWebSite()
+    + use()
+}
+class WebSiteFactory {
+    - pool : HashMap<String, ConcreteWebSite>
+    + getWebSiteCategory()
+    + getWebSiteCount()
+}
+class User {
+    - name : String
+    + User()
+    + getName()
+    + setName()
+}
+ConcreteWebSite -up-|> WebSite
+WebSiteFactory o-right- WebSite
+Client ..> WebSiteFactory
+Client ..> ConcreteWebSite
+Client ..> User
+ConcreteWebSite ..> User
+@enduml

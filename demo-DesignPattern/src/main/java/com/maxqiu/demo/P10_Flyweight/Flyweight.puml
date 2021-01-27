@@ -1,0 +1,16 @@
+@startuml
+abstract class Flyweight {
+    + operation()
+}
+class ConcreteFlyweight {
+}
+class UnSharedConcreteFlyweight {
+}
+class FlyweightFactory {
+    + getFlyweight(key)
+}
+ConcreteFlyweight -up-|> Flyweight
+UnSharedConcreteFlyweight -up-|> Flyweight
+FlyweightFactory o-right- Flyweight
+FlyweightFactory --> Flyweight
+@enduml
