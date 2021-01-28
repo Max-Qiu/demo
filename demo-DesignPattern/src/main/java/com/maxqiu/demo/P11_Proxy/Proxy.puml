@@ -1,0 +1,4 @@
+@startuml
+ProxyObject <.. Client
+ProxyObject ..> TargetObject
+@enduml
