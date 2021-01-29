@@ -1,0 +1,17 @@
+@startuml
+abstract class SoybeanMilk {
+    {abstract} ~ addCondiments()
+    ~ beat()
+    ~ make()
+    ~ select()
+    ~ soak()
+}
+class PeanutSoybeanMilk {
+    ~ addCondiments()
+}
+class RedBeanSoybeanMilk {
+    ~ addCondiments()
+}
+PeanutSoybeanMilk -up-|> SoybeanMilk
+RedBeanSoybeanMilk -up-|> SoybeanMilk
+@enduml

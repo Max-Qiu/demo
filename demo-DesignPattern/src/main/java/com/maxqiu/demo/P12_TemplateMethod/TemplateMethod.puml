@@ -1,0 +1,19 @@
+@startuml
+abstract class AbstractClass {
+    template()
+    operation1()
+    operation2()
+}
+class ConcreteClassA {
+    operation1()
+    operation2()
+}
+class ConcreteClassB {
+    operation1()
+    operation2()
+}
+AbstractClass <-- ConcreteClassA
+AbstractClass <-- ConcreteClassB
+Client .up.> ConcreteClassA
+Client .up.> ConcreteClassB
+@enduml

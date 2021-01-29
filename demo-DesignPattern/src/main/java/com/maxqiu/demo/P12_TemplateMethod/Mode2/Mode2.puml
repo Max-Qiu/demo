@@ -1,0 +1,23 @@
+@startuml
+abstract class SoybeanMilk {
+    {abstract} ~ addCondiments()
+    ~ beat()
+    ~ customerWantCondiments()
+    ~ make()
+    ~ select()
+    ~ soak()
+}
+class PeanutSoybeanMilk {
+    ~ addCondiments()
+}
+class PureSoybeanMilk {
+    ~ addCondiments()
+    ~ customerWantCondiments()
+}
+class RedBeanSoybeanMilk {
+    ~ addCondiments()
+}
+PeanutSoybeanMilk -up-|> SoybeanMilk
+PureSoybeanMilk -up-|> SoybeanMilk
+RedBeanSoybeanMilk -up-|> SoybeanMilk
+@enduml
