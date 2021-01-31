@@ -1,0 +1,58 @@
+@startuml
+interface Command {
+    {abstract} + execute()
+    {abstract} + undo()
+}
+class LightOffCommand {
+    + LightOffCommand()
+    + execute()
+    + undo()
+}
+class LightOnCommand {
+    + LightOnCommand()
+    + execute()
+    + undo()
+}
+class LightReceiver {
+    + off()
+    + on()
+}
+class NoCommand {
+    + execute()
+    + undo()
+}
+class RemoteController {
+    ~ onCommands : Command[]
+    ~ offCommands : Command[]
+    + RemoteController()
+    + offButtonWasPushed()
+    + onButtonWasPushed()
+    + setCommand()
+    + undoButtonWasPushed()
+}
+class TvOffCommand {
+    + TvOffCommand()
+    + execute()
+    + undo()
+}
+class TvOnCommand {
+    + TvOnCommand()
+    + execute()
+    + undo()
+}
+class TvReceiver {
+    + off()
+    + on()
+}
+
+LightOffCommand .up.|> Command
+LightOffCommand o-- LightReceiver
+LightOnCommand .up.|> Command
+LightOnCommand o-- LightReceiver
+NoCommand .up.|> Command
+RemoteController o-- Command
+TvOffCommand .up.|> Command
+TvOffCommand o-- TvReceiver
+TvOnCommand .up.|> Command
+TvOnCommand o-- TvReceiver
+@enduml
