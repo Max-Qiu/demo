@@ -1,0 +1,45 @@
+@startuml
+abstract class Action {
+    {abstract} + getResult(man : Man)
+    {abstract} + getResult(woman : Woman)
+}
+class Success {
+    + getResult(man : Man)
+    + getResult(woman : Woman)
+}
+class Wait {
+    + getResult(man : Man)
+    + getResult(woman : Woman)
+}
+class Fail {
+    + getResult(man : Man)
+    + getResult(woman : Woman)
+}
+abstract class Person {
+    {abstract} + accept(action : Action)
+}
+class Man {
+    + accept(action : Action)
+}
+class Woman {
+    + accept(action : Action)
+}
+class ObjectStructure {
+    - persons : List<Person>
+    + attach(person : Person)
+    + detach(person : Person)
+    + display()
+}
+class Client {
+    {static} + main()
+}
+Fail -up-|> Action
+Man -up-|> Person
+Success -up-|> Action
+Wait -up-|> Action
+Woman -up-|> Person
+Action -right- Person
+ObjectStructure o-- Person
+Client ..> Action
+Client .right.> ObjectStructure
+@enduml
