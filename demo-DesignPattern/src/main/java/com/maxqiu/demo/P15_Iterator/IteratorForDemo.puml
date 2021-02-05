@@ -1,0 +1,62 @@
+@startuml
+class Client {
+    {static} + main()
+}
+interface Iterator {
+    {abstract} + hasNext()
+    {abstract} + next()
+    {abstract} + remove()
+}
+interface College {
+    {abstract} + addDepartment()
+    {abstract} + createIterator()
+    {abstract} + getName()
+}
+class ComputerCollege {
+    ~ departments : Department[]
+    ~ numOfDepartment : int
+    + ComputerCollege()
+    + addDepartment()
+    + createIterator()
+    + getName()
+}
+class ComputerCollegeIterator {
+    ~ departments : Department[]
+    ~ position : int
+    + ComputerCollegeIterator()
+    + hasNext()
+    + next()
+}
+class Department {
+    - name : String
+    + Department()
+    + getName()
+    + setName()
+}
+class InfoCollege {
+    ~ departmentList : List<Department>
+    + InfoCollege()
+    + addDepartment()
+    + createIterator()
+    + getName()
+}
+class InfoCollegeIterator {
+    ~ departmentList : List<Department>
+    ~ index : int
+    + InfoCollegeIterator()
+    + hasNext()
+    + next()
+}
+ComputerCollege .up.|> College
+ComputerCollegeIterator .up.|> Iterator
+InfoCollege .up.|> College
+InfoCollegeIterator .up.|> Iterator
+ComputerCollege o-- Department
+InfoCollege o-- Department
+ComputerCollegeIterator o-- Department
+InfoCollegeIterator o-- Department
+ComputerCollege -right-> ComputerCollegeIterator
+InfoCollege -right-> InfoCollegeIterator
+Client --> Iterator
+Client --> College
+@enduml
