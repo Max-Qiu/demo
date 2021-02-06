@@ -1,0 +1,44 @@
+@startuml
+interface Observer {
+    {abstract} + update()
+}
+class CurrentConditions {
+    - humidity : float
+    - pressure : float
+    - temperature : float
+    + display()
+    + update()
+}
+class BaiduSite {
+    - humidity : float
+    - pressure : float
+    - temperature : float
+    + display()
+    + update()
+}
+interface Subject {
+    {abstract} + notifyObservers(o : Observer)
+    {abstract} + registerObserver(o : Observer)
+    {abstract} + removeObserver()
+}
+class WeatherData {
+    - humidity : float
+    - observers : ArrayList<Observer>
+    - pressure : float
+    - temperature : float
+    + notifyObservers()
+    + registerObserver()
+    + removeObserver()
+    + setData()
+}
+class Client {
+    {static} + main()
+}
+BaiduSite .up.|> Observer
+CurrentConditions .up.|> Observer
+WeatherData .up.|> Subject
+WeatherData o-- Observer
+Subject .left.> Observer
+Client ..> Subject
+Client ..> Observer
+@enduml

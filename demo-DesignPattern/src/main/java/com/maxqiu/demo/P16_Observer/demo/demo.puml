@@ -1,0 +1,24 @@
+@startuml
+class Client {
+    {static} + main()
+}
+class CurrentConditions {
+    - humidity : float
+    - pressure : float
+    - temperature : float
+    + display()
+    + update()
+}
+class WeatherData {
+    - humidity : float
+    - pressure : float
+    - temperature : float
+    + WeatherData()
+    + dataChange()
+    + getHumidity()
+    + getPressure()
+    + getTemperature()
+    + setData()
+}
+WeatherData o-- CurrentConditions : currentConditions
+@enduml
