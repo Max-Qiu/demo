@@ -1,0 +1,5 @@
+@startuml
+Mediator -right- Colleague
+Mediator <|-- ConcreteMediator
+Colleague <|-- ConcreteColleague
+@enduml

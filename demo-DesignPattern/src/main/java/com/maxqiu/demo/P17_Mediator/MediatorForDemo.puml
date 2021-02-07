@@ -1,0 +1,49 @@
+@startuml
+class Alarm {
+    + Alarm()
+    + sendMessage()
+}
+class Client {
+    {static} + main()
+}
+class CoffeeMachine {
+    + CoffeeMachine()
+    + finishCoffee()
+    + sendMessage()
+    + startCoffee()
+}
+abstract class Colleague {
+    # id : Integer
+    + Colleague()
+    + getMediator()
+    {abstract} + sendMessage()
+}
+class ConcreteMediator {
+    - colleagueMap : HashMap<Integer, Colleague>
+    + getMessage()
+    + register()
+}
+class Curtains {
+    + Curtains()
+    + sendMessage()
+    + upCurtains()
+}
+abstract class Mediator {
+    {abstract} + getMessage()
+    {abstract} + register()
+}
+class Television {
+    + Television()
+    + sendMessage()
+    + startTv()
+    + stopTv()
+}
+Alarm -up-|> Colleague
+CoffeeMachine -up-|> Colleague
+Colleague -left- Mediator
+ConcreteMediator -up-|> Mediator
+Curtains -up-|> Colleague
+Television -up-|> Colleague
+Client ..> Mediator
+Client ..> Colleague
+@enduml
