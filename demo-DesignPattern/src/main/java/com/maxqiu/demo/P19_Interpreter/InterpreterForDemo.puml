@@ -1,0 +1,39 @@
+@startuml
+class AddExpression {
+    + AddExpression()
+    + interpreter()
+}
+class Calculator {
+    + Calculator()
+    + run()
+}
+class Client {
+    {static} + getExpStr()
+    {static} + getValue()
+    {static} + main()
+}
+abstract class Expression {
+    {abstract} + interpreter()
+}
+class SubExpression {
+    + SubExpression()
+    + interpreter()
+}
+abstract class SymbolExpression {
+    # left : Expression
+    # right : Expression
+    + SymbolExpression()
+}
+class VarExpression {
+    - key : String
+    + VarExpression()
+    + interpreter()
+}
+AddExpression -up-|> SymbolExpression
+Calculator o-- Expression : expression
+SubExpression -up-|> SymbolExpression
+SymbolExpression -up-|> Expression
+SymbolExpression o-- Expression
+VarExpression -up-|> Expression
+Client .right.> Calculator
+@enduml
