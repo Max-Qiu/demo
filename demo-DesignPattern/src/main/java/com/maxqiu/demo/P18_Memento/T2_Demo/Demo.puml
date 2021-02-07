@@ -1,0 +1,32 @@
+@startuml
+class GameRole {
+    - def : int
+    - vit : int
+    + createMemento()
+    + display()
+    + getDef()
+    + getVit()
+    + recoverGameRoleFromMemento()
+    + setDef()
+    + setVit()
+}
+class Archive {
+    - def : int
+    - vit : int
+    + Archive()
+    + getDef()
+    + getVit()
+}
+class ArchiveManager {
+    - map : HashMap<String, Archive>
+    + getMemento()
+    + setMemento()
+}
+class Client {
+    {static} + main()
+}
+Archive --o ArchiveManager
+GameRole .right.> Archive
+Client .up.> GameRole
+Client .right.> ArchiveManager
+@enduml

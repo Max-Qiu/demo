@@ -1,0 +1,26 @@
+@startuml
+class Originator {
+    - state : String
+    + getState()
+    + getStateFromMemento()
+    + saveStateMemento()
+    + setState()
+}
+class Memento {
+    - state : String
+    + Memento()
+    + getState()
+}
+class Caretaker {
+    - mementoList : List<Memento>
+    + add()
+    + get()
+}
+class Client {
+    {static} + main()
+}
+Memento --o Caretaker
+Originator .right.> Memento
+Client .up.> Originator
+Client .right.> Caretaker
+@enduml
