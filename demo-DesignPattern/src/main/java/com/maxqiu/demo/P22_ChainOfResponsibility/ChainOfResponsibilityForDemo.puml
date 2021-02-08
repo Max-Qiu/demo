@@ -1,0 +1,38 @@
+@startuml
+abstract class Approver {
+    # approver : Approver
+    # name : String
+    + Approver(name : String)
+    {abstract} + processRequest(p : PurchaseRequest)
+    + setApprover(approver : Approver)
+}
+class DepartmentApprover {
+    + DepartmentApprover(name : String)
+    + processRequest(p : PurchaseRequest)
+}
+class CollegeApprover {
+    + CollegeApprover(name : String)
+    + processRequest(p : PurchaseRequest)
+}
+class SchoolMasterApprover {
+    + SchoolMasterApprover(name : String)
+    + processRequest(p : PurchaseRequest)
+}
+class PurchaseRequest {
+    - id : int
+    - price : float
+    + PurchaseRequest()
+    + getId()
+    + getPrice()
+}
+class Client {
+    {static} + main()
+}
+Approver o-- Approver
+CollegeApprover -up-|> Approver
+DepartmentApprover -up-|> Approver
+SchoolMasterApprover -up-|> Approver
+PurchaseRequest <.. Approver
+Client .right.> Approver
+Client .right.> PurchaseRequest
+@enduml

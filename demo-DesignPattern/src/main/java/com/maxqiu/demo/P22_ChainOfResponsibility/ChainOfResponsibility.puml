@@ -1,0 +1,18 @@
+@startuml
+abstract class Handler {
+    # handler : Handler
+    {abstract} + processRequest(p : Request)
+}
+class ConcreteHandlerA {
+    + processRequest(p : Request)
+}
+class ConcreteHandlerB {
+    + processRequest(p : Request)
+}
+Handler o-- Handler
+ConcreteHandlerA -up-|> Handler
+ConcreteHandlerB -up-|> Handler
+Request <.. Handler
+Client .right.> Handler
+Client .right.> Request
+@enduml
