@@ -1,0 +1,59 @@
+@startuml
+abstract class State {
+    {abstract} + deductMoney()
+    {abstract} + dispensePrize()
+    {abstract} + raffle()
+}
+class NormalRaffleState {
+    + NormalRaffleState()
+    + deductMoney()
+    + dispensePrize()
+    + raffle()
+}
+class CanRaffleState {
+    + CanRaffleState()
+    + deductMoney()
+    + dispensePrize()
+    + raffle()
+}
+class DispenseState {
+    + DispenseState()
+    + deductMoney()
+    + dispensePrize()
+    + raffle()
+}
+class DispenseOutState {
+    + DispenseOutState()
+    + deductMoney()
+    + dispensePrize()
+    + raffle()
+}
+class RaffleActivity {
+    - state : State
+    - count : int
+    + RaffleActivity()
+    + getCanRaffleState()
+    + getCount()
+    + getDispenseOutState()
+    + getDispenseState()
+    + getNormalRaffleState()
+    + getState()
+    + participateInActivities()
+    + raffle()
+    + setCount()
+    + setState()
+}
+class Client {
+    {static} + main()
+}
+CanRaffleState -up-|> State
+CanRaffleState o-- RaffleActivity
+DispenseOutState -up-|> State
+DispenseOutState o-- RaffleActivity
+DispenseState -up-|> State
+DispenseState o-- RaffleActivity
+NormalRaffleState -up-|> State
+NormalRaffleState o-- RaffleActivity
+RaffleActivity o-- State
+RaffleActivity <.. Client
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+abstract class State{
+    operation1() : void
+    operation2() : void
+}
+class Context {
+    - state : State
+    + getState() : State
+}
+Context o-- State
+State <|-- ConcreteStateA
+State <|-- ConcreteStateB
+@enduml
