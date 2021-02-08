@@ -1,0 +1,33 @@
+@startuml
+interface FlyBehavior {
+    {abstract} + fly()
+}
+class GoodFlyBehavior {
+    + fly()
+}
+class NoFlyBehavior {
+    + fly()
+}
+abstract class Duck {
+    {abstract} + display()
+    + fly()
+}
+class ToyDuck {
+    + ToyDuck()
+    + display()
+}
+class WildDuck {
+    + WildDuck()
+    + display()
+}
+class Client {
+    {static} + main()
+}
+Duck o-- FlyBehavior
+GoodFlyBehavior .up.|> FlyBehavior
+NoFlyBehavior .up.|> FlyBehavior
+ToyDuck -up-|> Duck
+WildDuck -up-|> Duck
+Client .up.> ToyDuck
+Client .up.> WildDuck
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+class Client {
+    {static} + main()
+}
+abstract class Duck {
+    + Duck()
+    {abstract} + display()
+    + fly()
+    + quack()
+    + swim()
+}
+class ToyDuck {
+    + display()
+    + fly()
+    + quack()
+    + swim()
+}
+class WildDuck {
+    + display()
+}
+ToyDuck -up-|> Duck
+WildDuck -up-|> Duck
+ToyDuck ..> Client
+WildDuck ..> Client
+@enduml

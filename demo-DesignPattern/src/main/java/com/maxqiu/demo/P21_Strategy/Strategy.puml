@@ -1,0 +1,20 @@
+@startuml
+interface StrategyA{
+    operationA1() : void
+    operationA2() : void
+}
+interface StrategyB{
+    operationB1() : void
+    operationB2() : void
+}
+StrategyA <|.. ConcreteStrategyA
+StrategyA <|.. ConcreteStrategyB
+StrategyB <|.. ConcreteStrategyC
+StrategyB <|.. ConcreteStrategyD
+class Context{
+    - strategyA : StrategyA
+    - strategyB : StrategyB
+}
+Context o-- StrategyA
+Context o-- StrategyB
+@enduml
