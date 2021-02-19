@@ -124,9 +124,7 @@ public static void main(String[] args) {
 - 优点：容易理解
 - 缺点：违反了设计模式的[OCP原则](https://maxqiu.com/article/detail/58#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99%20Open%20Closed%20Principle)
 
-改进方案：
-
-> 使用工厂方法模式
+改进方案 -> 使用工厂方法模式
 
 ## 工厂方法模式 Factory Method Pattern
 
@@ -284,3 +282,15 @@ public static void main(String[] args) {
     IHamburger lobsterHamburger = lobsterFactory.createHamburger();
 }
 ```
+
+# 总结
+
+1. 工厂模式的意义：将实例化对象的代码提取出来，放到一个类中统一管理和维护，达到和主项目的依赖关系的解耦。从而提高项目的扩展和维护性。
+2. 三种工厂模式
+    - 简单工厂模式
+    - 工厂方法模式
+    - 抽象工厂模式
+3. 设计模式的依赖抽象原则
+    - 创建对象实例时，不要直接`new`类，而是把这个`new`类的动作放在一个工厂的方法中，并返回。有的书上说，变量不要直接持有具体类的引用。
+    - 不要让类继承具体类，而是继承抽象类或者是实现接口。
+    - 不要覆盖基类中已经实现的方法。

@@ -1,9 +1,9 @@
-package com.maxqiu.demo.P01_Singleton.type1;
+package com.maxqiu.demo.P01_Singleton.Mode2_LazyMan.demo2;
 
 /**
  * @author Max_Qiu
  */
-public class SingletonTest1 {
+public class Test {
 
     public static void main(String[] args) {
         Singleton instance1 = Singleton.getInstance();
@@ -15,17 +15,19 @@ public class SingletonTest1 {
 
 }
 
-// 饿汉式（静态常量）
+// 懒汉式（同步方法，线程安全，效率低）
 class Singleton {
 
-    // 1. 构造器私有化, 外部能new
+    private static Singleton instance;
+
     private Singleton() {}
 
-    // 2. 本类内部创建对象实例
-    private static final Singleton INSTANCE = new Singleton();
-
-    // 3. 提供一个公有的静态方法，返回实例对象
-    public static Singleton getInstance() {
-        return INSTANCE;
+    // 使用同步方法，保证线程安全
+    public static synchronized Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
     }
+
 }

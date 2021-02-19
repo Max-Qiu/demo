@@ -1,9 +1,9 @@
-package com.maxqiu.demo.P01_Singleton.type2;
+package com.maxqiu.demo.P01_Singleton.Mode1_HungryMan.T2_StaticCodeBlock;
 
 /**
  * @author Max_Qiu
  */
-public class SingletonTest2 {
+public class Test {
 
     public static void main(String[] args) {
         Singleton instance1 = Singleton.getInstance();
@@ -15,7 +15,7 @@ public class SingletonTest2 {
 
 }
 
-// 饿汉式(静态变量)
+// 饿汉式（静态代码块）
 class Singleton {
 
     // 1. 构造器私有化, 外部不能new

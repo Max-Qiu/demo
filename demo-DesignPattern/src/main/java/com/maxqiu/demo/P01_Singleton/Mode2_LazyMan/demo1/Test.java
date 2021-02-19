@@ -1,9 +1,9 @@
-package com.maxqiu.demo.P01_Singleton.type3;
+package com.maxqiu.demo.P01_Singleton.Mode2_LazyMan.demo1;
 
 /**
  * @author Max_Qiu
  */
-public class SingletonTest3 {
+public class Test {
 
     public static void main(String[] args) {
         // 多次运行，有时打印的hashCode不一致
@@ -15,6 +15,7 @@ public class SingletonTest3 {
 
 // 懒汉式（线程不安全）
 class Singleton {
+
     private Singleton() {}
 
     private static Singleton instance;
@@ -26,4 +27,5 @@ class Singleton {
         }
         return instance;
     }
+
 }

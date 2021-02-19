@@ -2,7 +2,7 @@
 
 > 介绍
 
-`动态的将新功能附加到对象上。`在对象功能扩展方面，它比继承更有弹性，装饰者模式也体现了开闭原则
+`动态的将新功能附加到对象上。`在对象功能扩展方面，它比继承更有弹性，装饰者模式也体现了**开闭原则**
 
 > 角色
 
@@ -27,11 +27,7 @@
 
 > UML类图
 
-![](https://cdn.maxqiu.com/upload/3dfe18be870b4e1d8c699b07b1bc9d80.jpg)
-
-PS：`PlantUML`生成的类图不太好看，直接看`IDEA`生成的：
-
-![](https://cdn.maxqiu.com/upload/154fa9b536664656a1d27512d533d886.jpg)
+![](https://cdn.maxqiu.com/upload/347639d5cbbb42849feda5ac5633d068.jpg)
 
 > 代码实现
 

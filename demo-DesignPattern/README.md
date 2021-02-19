@@ -1,16 +1,15 @@
-> 本系列文档整理自视频教程：
+> 本系列文档整理自视频教程：[尚硅谷_图解Java设计模式](http://www.atguigu.com/download_detail.shtml?v=202)
 
-[尚硅谷_图解Java设计模式](http://www.atguigu.com/download_detail.shtml?v=202)
+个人整理示例代码：
 
-> 示例代码：
-GitHub：[https://github.com/Max-Qiu/demo/tree/main/demo-DesignPattern](https://github.com/Max-Qiu/demo/tree/main/demo-DesignPattern)
-Gitee：[https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPattern](https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPattern)
+- GitHub：[https://github.com/Max-Qiu/demo/tree/main/demo-DesignPattern](https://github.com/Max-Qiu/demo/tree/main/demo-DesignPattern)
+- Gitee：[https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPattern](https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPattern)
 
-推荐阅读：[漫画：什么是 “设计模式” ？](https://mp.weixin.qq.com/s/XpeT7OOkXRBFSuCv7XG_NA)
+> 推荐阅读：[漫画：什么是 “设计模式” ？](https://mp.weixin.qq.com/s/XpeT7OOkXRBFSuCv7XG_NA)
 
 # 概述
 
-> 设计模式是程序员在面对同类软件工程设计问题所总结出来的有用的经验，模式不是代码，而是某类问题的通用解决方案，设计模式（Design Pattern）代表了最佳的实践。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。
+设计模式是程序员在面对同类软件工程设计问题所总结出来的有用的经验，模式不是代码，而是某类问题的通用解决方案，设计模式（Design Pattern）代表了最佳的实践。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。
 
 设计模式的本质提高**软件的维护性**，**通用性和扩展性**，并**降低软件的复杂度**
 

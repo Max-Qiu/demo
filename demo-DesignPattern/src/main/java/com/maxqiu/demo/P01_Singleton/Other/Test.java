@@ -1,12 +1,15 @@
-package com.maxqiu.demo.P01_Singleton.type_error;
+package com.maxqiu.demo.P01_Singleton.Other;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 /**
+ * 网上看到的一种方法，但是不能解决反射的问题
+ * 
  * @author Max_Qiu
  */
-public class SingletonTest9 {
+public class Test {
+
     public static void main(String[] args)
         throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         // 1. 先使用反射
@@ -21,9 +24,11 @@ public class SingletonTest9 {
         Singleton instance1 = Singleton.getInstance();
         System.out.println("instance1.hashCode=" + instance1.hashCode());
     }
+
 }
 
 class Singleton {
+
     private static volatile Singleton instance;
 
     // 添加一个是否已经实例化的判断变量
@@ -51,4 +56,5 @@ class Singleton {
         }
         return instance;
     }
+
 }

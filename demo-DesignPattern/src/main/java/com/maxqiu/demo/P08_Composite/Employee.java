@@ -16,4 +16,5 @@ public class Employee extends HumanResource {
     public double calculateSalary() {
         return salary;
     }
+
 }

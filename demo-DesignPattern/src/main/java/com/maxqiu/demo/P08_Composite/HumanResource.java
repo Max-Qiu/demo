@@ -32,4 +32,5 @@ public abstract class HumanResource {
      * 计算工资
      */
     public abstract double calculateSalary();
+
 }

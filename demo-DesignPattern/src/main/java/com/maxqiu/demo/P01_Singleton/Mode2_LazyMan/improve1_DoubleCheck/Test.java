@@ -1,9 +1,10 @@
-package com.maxqiu.demo.P01_Singleton.type6;
+package com.maxqiu.demo.P01_Singleton.Mode2_LazyMan.improve1_DoubleCheck;
 
 /**
  * @author Max_Qiu
  */
-public class SingletonTest6 {
+public class Test {
+
     public static void main(String[] args) {
         new Thread(() -> System.out.println(Singleton.getInstance().hashCode())).start();
         new Thread(() -> System.out.println(Singleton.getInstance().hashCode())).start();
@@ -13,10 +14,12 @@ public class SingletonTest6 {
         System.out.println("instance1.hashCode=" + instance1.hashCode());
         System.out.println("instance2.hashCode=" + instance2.hashCode());
     }
+
 }
 
 // 懒汉式（双重检查）
 class Singleton {
+
     private static volatile Singleton instance;
 
     private Singleton() {}
@@ -34,4 +37,5 @@ class Singleton {
         }
         return instance;
     }
+
 }

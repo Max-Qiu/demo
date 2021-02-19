@@ -1,9 +1,9 @@
-package com.maxqiu.demo.P01_Singleton.type7;
+package com.maxqiu.demo.P01_Singleton.Mode2_LazyMan.improve2_StaticInnerClass;
 
 /**
  * @author Max_Qiu
  */
-public class SingletonTest7 {
+public class Test {
 
     public static void main(String[] args) {
         Singleton instance1 = Singleton.getInstance();
@@ -17,6 +17,7 @@ public class SingletonTest7 {
 
 // 懒汉式（静态内部类）
 class Singleton {
+
     // 1. 构造器私有化
     private Singleton() {}
 
@@ -29,4 +30,5 @@ class Singleton {
     public static synchronized Singleton getInstance() {
         return SingletonInstance.INSTANCE;
     }
+
 }

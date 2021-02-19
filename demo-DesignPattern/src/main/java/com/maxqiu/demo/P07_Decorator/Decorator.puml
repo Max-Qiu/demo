@@ -25,8 +25,8 @@ class Caramel {
 }
 Decaf -up-|> Goods
 Espresso -up-|> Goods
-Coffee --|> Goods
-Coffee *-- Goods
+Coffee -up-|> Goods
+Coffee *-up- Goods
 Milk -up-|> Coffee
 Caramel -up-|> Coffee
 @enduml

@@ -50,11 +50,11 @@ Java中`Object`类是所有类的根类，`Object`类提供了一个`clone()`方
 
 # 原型模式 Prototype Pattern
 
-## 简介
+> 简介
 
-> 用原型实例指定创建对象的种类，并且通过拷贝这些原型，创建新的对象，原型模式是一种创建型设计模式，允许一个对象再创建另外一个可定制的对象，无需知道如何创建的细节
+用原型实例指定创建对象的种类，并且通过拷贝这些原型，创建新的对象，原型模式是一种创建型设计模式，允许一个对象再创建另外一个可定制的对象，无需知道如何创建的细节
 
-UML类图
+> UML类图与角色
 
 ![](https://cdn.maxqiu.com/upload/93230b617c424f20a2df1bbcfea92b3c.jpg)
 
@@ -100,6 +100,8 @@ public static void main(String[] args) throws CloneNotSupportedException {
     System.out.println(c2 + " " + c2.hashCode());
 }
 ```
+
+输出如下：
 
     Sheep(age=1, color=白色) 932607259
     Sheep(age=1, color=白色) 1740000325
@@ -156,9 +158,21 @@ public class Sheep implements Cloneable {
 
 问题分析：这只羊对应的朋友并没有被克隆
 
+- 对于数据类型是**基本数据类型**的成员变量，浅拷贝会直接进行值传递，也就是将该属性值复制一份给新的对象。
+- 对于数据类型是**引用数据类型**的成员变量，比如说成员变量是某个数组、某个类的对象等，那么浅拷贝会进行引用传递，也就是只是将该成员变量的引用值（内存地址）复制一份给新的对象。因为实际上两个对象的该成员变量都指向同一个实例。在这种情况下，在一个对象中修改该成员变量会影响到另一个对象的该成员变量值
+- 前面克隆羊就是浅拷贝，浅拷贝是使用默认的`clone()`方法来实现
+
 解决方案：使用深拷贝
 
 ## 深拷贝
+
+> 基本介绍
+
+1. 复制对象的所有基本数据类型的成员变量值
+2. 为所有引用数据类型的成员变量申请存储空间，并复制每个引用数据类型成员变量所引用的对象，直到该对象可达的所有对象。也就是说，对象进行深拷贝要对整个对象（包括对象的引用类型）进行拷贝
+3. 深拷贝实现方式
+    - 重写`clone`方法来实现深拷贝
+    - 通过对象序列化实现深拷贝（推荐)
 
 ### 重写clone()
 
@@ -274,24 +288,23 @@ public class Sheep implements Serializable {
 
 > 重写后每只克隆羊都有自己的克隆朋友
 
+```java
+public static void main(String[] args) {
+    Sheep friendSheep = new Sheep("jerry", 2, "黑色");
+    Sheep s = new Sheep("tom", 1, "白色", friendSheep);
+    Sheep c1 = s.clone();
+    Sheep c2 = s.clone();
+    System.out.println(s + " " + s.hashCode() + " " + s.getFriend() + " " + s.getFriend().hashCode());
+    System.out.println(c1 + " " + c1.hashCode() + " " + c1.getFriend() + " " + c1.getFriend().hashCode());
+    System.out.println(c2 + " " + c2.hashCode() + " " + c2.getFriend() + " " + c2.getFriend().hashCode());
+}
+```
+
+输出如下：
+
     Sheep(name=Tom, age=1, color=白色, friend=Sheep(name=Jerry, age=2, color=黑色, friend=null)) 1032607259 Sheep(name=Jerry, age=2, color=黑色, friend=null) 1740000325
     Sheep(name=Tom, age=1, color=白色, friend=Sheep(name=Jerry, age=2, color=黑色, friend=null)) 1142020464 Sheep(name=Jerry, age=2, color=黑色, friend=null) 1682092198
     Sheep(name=Tom, age=1, color=白色, friend=Sheep(name=Jerry, age=2, color=黑色, friend=null)) 1626877848 Sheep(name=Jerry, age=2, color=黑色, friend=null) 905544614
-
-## 深浅拷贝对比
-
-浅拷贝
-
-- 对于数据类型是基本数据类型的成员变量，浅拷贝会直接进行值传递，也就是将该属性值复制一份给新的对象。浅拷贝是使用默认的`clone()`方法来实现
-- 对于数据类型是引用数据类型的成员变量，比如说成员变量是某个数组、某个类的对象等，那么浅拷贝会进行引用传递，也就是只是将该成员变量的引用值（内存地址）复制一份给新的对象。因为实际上两个对象的该成员变量都指向同一个实例。在这种情况下，在一个对象中修改该成员变量会影响到另一个对象的该成员变量值
-
-深拷贝
-
-- 复制对象的所有基本数据类型的成员变量值
-- 为所有引用数据类型的成员变量申请存储空间，并复制每个引用数据类型成员变量所引用的对象，直到该对象可达的所有对象。也就是说，对象进行深拷贝要对整个对象（包括对象的引用类型）进行拷贝
-- 深拷贝实现方式：
-    1. 重写`clone()`方法来实现深拷贝
-    2. 通过对象序列化实现深拷贝(推荐)
 
 # 总结
 

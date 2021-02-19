@@ -1,9 +1,9 @@
-package com.maxqiu.demo.P01_Singleton.type8;
+package com.maxqiu.demo.P01_Singleton.Mode3_Enum;
 
 /**
  * @author Max_Qiu
  */
-public class SingletonTest8 {
+public class Test {
 
     public static void main(String[] args) {
         Singleton instance1 = Singleton.INSTANCE;
@@ -18,9 +18,11 @@ public class SingletonTest8 {
 
 // 枚举
 enum Singleton {
+
     INSTANCE; // 属性
 
     public void sayOk() {
         System.out.println("ok~");
     }
+
 }
