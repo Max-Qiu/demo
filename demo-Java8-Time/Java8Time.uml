@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.time.LocalDateTime</OriginalElement>
+  <nodes>
+    <node x="132.0" y="500.0">java.time.Period</node>
+    <node x="444.0" y="345.0">java.time.Clock.SystemClock</node>
+    <node x="327.0" y="420.0">java.time.temporal.TemporalUnit</node>
+    <node x="280.0" y="190.0">java.time.LocalDateTime</node>
+    <node x="421.0" y="500.0">java.time.temporal.IsoFields.Unit</node>
+    <node x="452.0" y="190.0">java.time.Instant</node>
+    <node x="562.0" y="420.0">java.time.ZoneId</node>
+    <node x="96.0" y="0.0">java.time.temporal.TemporalAccessor</node>
+    <node x="156.0" y="345.0">java.time.Clock.FixedClock</node>
+    <node x="273.0" y="500.0">java.time.temporal.ChronoUnit</node>
+    <node x="546.0" y="500.0">java.time.ZoneRegion</node>
+    <node x="0.0" y="575.0">java.time.format.DateTimeFormatter</node>
+    <node x="0.0" y="500.0">java.time.Duration</node>
+    <node x="140.0" y="190.0">java.time.LocalDate</node>
+    <node x="0.0" y="190.0">java.time.LocalTime</node>
+    <node x="248.0" y="265.0">java.time.Clock</node>
+    <node x="38.0" y="420.0">java.time.temporal.TemporalAmount</node>
+    <node x="229.0" y="575.0">java.time.temporal.TemporalAdjusters</node>
+    <node x="304.0" y="345.0">java.time.Clock.TickClock</node>
+    <node x="0.0" y="345.0">java.time.Clock.OffsetClock</node>
+    <node x="128.0" y="80.0">java.time.temporal.Temporal</node>
+    <node x="284.0" y="80.0">java.time.temporal.TemporalAdjuster</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.time.ZoneRegion" target="java.time.ZoneId">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.time.Clock.OffsetClock" target="java.time.Clock">
+      <point x="-2.8421709430404007E-14" y="-15.0" />
+      <point x="67.99999999999997" y="315.0" />
+      <point x="259.0" y="315.0" />
+      <point x="-33.0" y="15.0" />
+    </edge>
+    <edge source="java.time.Clock.SystemClock" target="java.time.Clock">
+      <point x="0.0" y="-15.0" />
+      <point x="512.0" y="315.0" />
+      <point x="325.0" y="315.0" />
+      <point x="33.0" y="15.0" />
+    </edge>
+    <edge source="java.time.Clock.FixedClock" target="java.time.Clock">
+      <point x="0.0" y="-15.0" />
+      <point x="220.0" y="325.0" />
+      <point x="281.0" y="325.0" />
+      <point x="-11.0" y="15.0" />
+    </edge>
+    <edge source="java.time.temporal.ChronoUnit" target="java.time.temporal.TemporalUnit">
+      <point x="0.0" y="-15.0" />
+      <point x="337.0" y="475.0" />
+      <point x="363.0" y="475.0" />
+      <point x="-36.0" y="15.0" />
+    </edge>
+    <edge source="java.time.Instant" target="java.time.temporal.TemporalAdjuster">
+      <point x="26.0" y="-15.0" />
+      <point x="530.0" y="130.0" />
+      <point x="438.0" y="130.0" />
+      <point x="66.00000000000003" y="15.0" />
+    </edge>
+    <edge source="java.time.LocalDate" target="java.time.temporal.Temporal">
+      <point x="-30.0" y="-15.0" />
+      <point x="-14.0" y="15.0" />
+    </edge>
+    <edge source="java.time.Duration" target="java.time.temporal.TemporalAmount">
+      <point x="0.0" y="-15.0" />
+      <point x="56.0" y="475.0" />
+      <point x="78.0" y="475.0" />
+      <point x="-40.0" y="15.0" />
+    </edge>
+    <edge source="java.time.Clock.TickClock" target="java.time.Clock">
+      <point x="0.0" y="-15.0" />
+      <point x="364.0" y="325.0" />
+      <point x="303.0" y="325.0" />
+      <point x="11.0" y="15.0" />
+    </edge>
+    <edge source="java.time.Instant" target="java.time.temporal.Temporal">
+      <point x="-26.0" y="-15.0" />
+      <point x="478.0" y="140.0" />
+      <point x="226.0" y="140.0" />
+      <point x="42.0" y="15.0" />
+    </edge>
+    <edge source="java.time.temporal.Temporal" target="java.time.temporal.TemporalAccessor">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.time.LocalDate" target="java.time.temporal.TemporalAdjuster">
+      <point x="30.0" y="-15.0" />
+      <point x="230.0" y="170.0" />
+      <point x="350.0" y="170.0" />
+      <point x="-22.0" y="15.0" />
+    </edge>
+    <edge source="java.time.temporal.IsoFields.Unit" target="java.time.temporal.TemporalUnit">
+      <point x="0.0" y="-15.0" />
+      <point x="461.0" y="475.0" />
+      <point x="435.0" y="475.0" />
+      <point x="36.0" y="15.0" />
+    </edge>
+    <edge source="java.time.LocalTime" target="java.time.temporal.TemporalAdjuster">
+      <point x="30.00000000000003" y="-15.0" />
+      <point x="90.00000000000003" y="160.0" />
+      <point x="306.0" y="160.0" />
+      <point x="-66.0" y="15.0" />
+    </edge>
+    <edge source="java.time.Period" target="java.time.temporal.TemporalAmount">
+      <point x="0.0" y="-15.0" />
+      <point x="180.0" y="475.0" />
+      <point x="158.0" y="475.0" />
+      <point x="40.0" y="15.0" />
+    </edge>
+    <edge source="java.time.LocalDateTime" target="java.time.temporal.TemporalAdjuster">
+      <point x="38.0" y="-15.0" />
+      <point x="22.0" y="15.0" />
+    </edge>
+    <edge source="java.time.LocalTime" target="java.time.temporal.Temporal">
+      <point x="-29.99999999999997" y="-15.0" />
+      <point x="30.00000000000003" y="150.0" />
+      <point x="142.0" y="150.0" />
+      <point x="-42.0" y="15.0" />
+    </edge>
+    <edge source="java.time.LocalDateTime" target="java.time.temporal.Temporal">
+      <point x="-38.0" y="-15.0" />
+      <point x="318.0" y="150.0" />
+      <point x="198.0" y="150.0" />
+      <point x="14.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="337.0" y="302.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
