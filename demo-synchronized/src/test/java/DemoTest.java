@@ -1,17 +1,13 @@
+import org.junit.jupiter.api.Test;
+
 /**
  * 测试类
  * 
  * @author Max_Qiu
  */
-public class Test {
-
-    public static void main(String[] args) {
-        // test1();
-        // test2();
-        test3();
-    }
-
-    private static void test1() {
+public class DemoTest {
+    @Test
+    void test1() {
         // 创建一个对象
         SyncMethodObj syncMethodObj = new SyncMethodObj();
 
@@ -35,7 +31,8 @@ public class Test {
         // 同时也发现，当一个线程访问同步代码块时，另一个线程可以访问该对象的非同步代码块，如：normalAdd和synchronizedAdd1
     }
 
-    private static void test2() {
+    @Test
+    void test2() {
         // 创建两个对象
         SyncMethodObj syncMethodObj1 = new SyncMethodObj();
         SyncMethodObj syncMethodObj2 = new SyncMethodObj();
@@ -48,7 +45,8 @@ public class Test {
         thread2.start();
     }
 
-    private static void test3() {
+    @Test
+    void test3() {
         // 创建两个线程实例操作 操作同一个对象锁
         Thread thread1 = new Thread(SyncClassObj::synchronizedAdd1, "Thread1");
         Thread thread2 = new Thread(SyncClassObj::synchronizedAdd1, "Thread2");

@@ -3,7 +3,7 @@ package com.maxqiu.demo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxqiu.demo.entity.Employee;
 
@@ -13,7 +13,6 @@ import com.maxqiu.demo.entity.Employee;
  * @author Max_Qiu
  */
 public class MiddleOperationOfShortTest {
-
     List<Employee> employeeList;
     {
         employeeList = new ArrayList<>();
@@ -46,5 +45,4 @@ public class MiddleOperationOfShortTest {
             }
         }).forEach(System.out::println);
     }
-
 }

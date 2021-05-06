@@ -7,7 +7,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxqiu.demo.bean.Department;
 import com.maxqiu.demo.bean.Employee;
@@ -73,7 +73,7 @@ public class MybatisTest2 {
     }
 
     @Test
-    public void testFirstLevelCache() throws IOException {
+    void testFirstLevelCache() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         SqlSession openSession = sqlSessionFactory.openSession();
         try {
@@ -120,7 +120,7 @@ public class MybatisTest2 {
     }
 
     @Test
-    public void testSecondLevelCache() throws IOException {
+    void testSecondLevelCache() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         SqlSession openSession = sqlSessionFactory.openSession();
         SqlSession openSession2 = sqlSessionFactory.openSession();
@@ -141,7 +141,7 @@ public class MybatisTest2 {
     }
 
     @Test
-    public void testSecondLevelCache02() throws IOException {
+    void testSecondLevelCache02() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         SqlSession openSession = sqlSessionFactory.openSession();
         SqlSession openSession2 = sqlSessionFactory.openSession();

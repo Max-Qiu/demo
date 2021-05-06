@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 1. 创建 Stream
@@ -13,7 +13,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class CreateStreamTest {
-
     /**
      * Collection 提供了两个方法：stream() 与 parallelStream()
      */
@@ -68,5 +67,4 @@ public class CreateStreamTest {
         Stream<Double> stream2 = Stream.generate(Math::random).limit(5);
         stream2.forEach(System.out::println);
     }
-
 }

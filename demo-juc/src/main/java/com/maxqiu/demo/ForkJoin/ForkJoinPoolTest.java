@@ -6,18 +6,14 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.stream.LongStream;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author Max_Qiu
  */
-public class TestForkJoinPool {
-
-    public static void main(String[] args) {
-        test();
-        // normalAdd();
-        // java8Add();
-    }
-
-    public static void test() {
+public class ForkJoinPoolTest {
+    @Test
+    void test() {
         Instant start = Instant.now();
 
         ForkJoinPool pool = new ForkJoinPool();
@@ -34,7 +30,8 @@ public class TestForkJoinPool {
         // 6539
     }
 
-    public static void normalAdd() {
+    @Test
+    void normalAdd() {
         Instant start = Instant.now();
 
         long sum = 0L;
@@ -51,7 +48,8 @@ public class TestForkJoinPool {
         // 16177
     }
 
-    public static void java8Add() {
+    @Test
+    void java8Add() {
         Instant start = Instant.now();
 
         Long sum = LongStream.rangeClosed(0L, 50000000000L).parallel().reduce(0L, Long::sum);
@@ -63,5 +61,4 @@ public class TestForkJoinPool {
         System.out.println("耗费时间为：" + Duration.between(start, end).toMillis());
         // 5044
     }
-
 }

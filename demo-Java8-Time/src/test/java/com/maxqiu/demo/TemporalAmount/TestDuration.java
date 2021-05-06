@@ -6,7 +6,7 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Duration : 用于计算两个“时间”间隔
@@ -14,7 +14,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class TestDuration {
-
     /**
      * 使用
      */

@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxqiu.demo.entity.Employee;
 import com.maxqiu.demo.entity.Status;
@@ -21,7 +21,6 @@ import com.maxqiu.demo.entity.Status;
  * @author Max_Qiu
  */
 public class TerminatingOperationOfCollectTest {
-
     List<Employee> employeeList;
     {
         employeeList = new ArrayList<>();
@@ -117,5 +116,4 @@ public class TerminatingOperationOfCollectTest {
         String str = employeeList.stream().map(Employee::getName).collect(Collectors.joining(",", "----", "----"));
         System.out.println(str);
     }
-
 }

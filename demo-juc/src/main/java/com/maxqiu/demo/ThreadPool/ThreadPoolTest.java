@@ -7,6 +7,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import org.junit.jupiter.api.Test;
+
 // @formatter:off
 // 一、线程池：提供了一个线程队列，队列中保存着所有等待状态的线程。避免了创建与销毁额外开销，提高了响应的速度。
 //
@@ -28,14 +30,9 @@ import java.util.concurrent.Future;
 /**
  * @author Max_Qiu
  */
-public class TestThreadPool {
-
-    public static void main(String[] args) throws Exception {
-        // test1();
-        test2();
-    }
-
-    private static void test1() {
+public class ThreadPoolTest {
+    @Test
+    void test1() {
         // 1. 创建线程池
         ExecutorService pool = Executors.newFixedThreadPool(5);
 
@@ -50,7 +47,8 @@ public class TestThreadPool {
         pool.shutdown();
     }
 
-    private static void test2() throws ExecutionException, InterruptedException {
+    @Test
+    void test2() throws ExecutionException, InterruptedException {
         // 1. 创建线程池
         ExecutorService pool = Executors.newFixedThreadPool(5);
 

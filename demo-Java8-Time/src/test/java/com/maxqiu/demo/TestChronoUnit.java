@@ -3,7 +3,7 @@ package com.maxqiu.demo;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * ChronoUnit：标准的日期周期单位集 枚举
@@ -13,7 +13,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class TestChronoUnit {
-
     /**
      * 常量
      */

@@ -3,7 +3,7 @@ package com.maxqiu.demo.TemporalAmount;
 import java.time.LocalDate;
 import java.time.Period;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Period : 用于计算两个“日期”间隔
@@ -11,7 +11,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class TestPeriod {
-
     /**
      * 使用
      */

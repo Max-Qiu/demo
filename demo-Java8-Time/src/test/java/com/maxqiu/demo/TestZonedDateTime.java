@@ -4,7 +4,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Set;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * ZonedDateTime ： 带时区的时间或日期
@@ -12,7 +12,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class TestZonedDateTime {
-
     @Test
     public void test6() {
         Set<String> set = ZoneId.getAvailableZoneIds();

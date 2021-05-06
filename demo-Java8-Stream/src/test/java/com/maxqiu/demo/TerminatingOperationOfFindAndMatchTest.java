@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxqiu.demo.entity.Employee;
 import com.maxqiu.demo.entity.Status;
@@ -17,7 +17,6 @@ import com.maxqiu.demo.entity.Status;
  * @author Max_Qiu
  */
 public class TerminatingOperationOfFindAndMatchTest {
-
     List<Employee> employeeList;
     {
         employeeList = new ArrayList<>();
@@ -94,5 +93,4 @@ public class TerminatingOperationOfFindAndMatchTest {
         Optional<Double> max = stream.map(Employee::getSalary).max(Double::compare);
         System.out.println(max);
     }
-
 }

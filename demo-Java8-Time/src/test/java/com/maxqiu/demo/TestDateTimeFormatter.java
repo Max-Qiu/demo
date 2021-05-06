@@ -3,7 +3,7 @@ package com.maxqiu.demo;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * DateTimeFormatter : 解析和格式化日期或时间
@@ -11,7 +11,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class TestDateTimeFormatter {
-
     /**
      * 
      */

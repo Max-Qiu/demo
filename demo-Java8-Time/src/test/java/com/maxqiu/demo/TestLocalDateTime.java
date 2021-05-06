@@ -1,10 +1,18 @@
 package com.maxqiu.demo;
 
-import java.time.*;
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * LocalDateTime 本地时间和日期
@@ -12,7 +20,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class TestLocalDateTime {
-
     /**
      * 创建时间以及获取详细时间
      */

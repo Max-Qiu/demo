@@ -11,11 +11,15 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxqiu.demo.bean.Department;
 import com.maxqiu.demo.bean.Employee;
-import com.maxqiu.demo.dao.*;
+import com.maxqiu.demo.dao.DepartmentMapper;
+import com.maxqiu.demo.dao.EmployeeMapper;
+import com.maxqiu.demo.dao.EmployeeMapperAnnotation;
+import com.maxqiu.demo.dao.EmployeeMapperDynamicSql;
+import com.maxqiu.demo.dao.EmployeeMapperPlus;
 
 // @formatter:off
 // 1、接口式编程
@@ -37,7 +41,6 @@ import com.maxqiu.demo.dao.*;
  * @author Max_Qiu
  */
 public class MyBatisTest {
-
     public SqlSessionFactory getSqlSessionFactory() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
@@ -59,7 +62,7 @@ public class MyBatisTest {
      * 
      */
     @Test
-    public void test() throws IOException {
+    void test() throws IOException {
 
         // 2、获取sqlSession实例，能直接执行已经映射的sql语句
         // sql的唯一标识：statement Unique identifier matching the statement to use.
@@ -77,7 +80,7 @@ public class MyBatisTest {
     }
 
     @Test
-    public void test01() throws IOException {
+    void test01() throws IOException {
         // 1、获取sqlSessionFactory对象
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         // 2、获取sqlSession对象
@@ -96,7 +99,7 @@ public class MyBatisTest {
     }
 
     @Test
-    public void test02() throws IOException {
+    void test02() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         SqlSession openSession = sqlSessionFactory.openSession();
         try {
@@ -117,7 +120,7 @@ public class MyBatisTest {
      * 
      */
     @Test
-    public void test03() throws IOException {
+    void test03() throws IOException {
 
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         // 一、获取到的SqlSession不会自动提交数据
@@ -148,7 +151,7 @@ public class MyBatisTest {
     }
 
     @Test
-    public void test04() throws IOException {
+    void test04() throws IOException {
 
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         // 1、获取到的SqlSession不会自动提交数据
@@ -188,7 +191,7 @@ public class MyBatisTest {
     }
 
     @Test
-    public void test05() throws IOException {
+    void test05() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         SqlSession openSession = sqlSessionFactory.openSession();
         try {
@@ -216,7 +219,7 @@ public class MyBatisTest {
     }
 
     @Test
-    public void test06() throws IOException {
+    void test06() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         SqlSession openSession = sqlSessionFactory.openSession();
 
@@ -237,7 +240,7 @@ public class MyBatisTest {
     }
 
     @Test
-    public void testDynamicSql() throws IOException {
+    void testDynamicSql() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         SqlSession openSession = sqlSessionFactory.openSession();
         try {
@@ -282,7 +285,7 @@ public class MyBatisTest {
     }
 
     @Test
-    public void testBatchSave() throws IOException {
+    void testBatchSave() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         SqlSession openSession = sqlSessionFactory.openSession();
         try {
@@ -298,7 +301,7 @@ public class MyBatisTest {
     }
 
     @Test
-    public void testInnerParam() throws IOException {
+    void testInnerParam() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         SqlSession openSession = sqlSessionFactory.openSession();
         try {

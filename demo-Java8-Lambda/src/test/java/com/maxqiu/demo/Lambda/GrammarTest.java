@@ -4,7 +4,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Lambda语法示例
@@ -12,7 +12,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class GrammarTest {
-
     /**
      * 无参无返回值
      */
@@ -111,5 +110,4 @@ public class GrammarTest {
         Supplier<Integer> supplier3 = () -> 1;
         System.out.println(supplier3.get());
     }
-
 }

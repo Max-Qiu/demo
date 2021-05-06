@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxqiu.demo.entity.Employee;
 
@@ -14,7 +14,6 @@ import com.maxqiu.demo.entity.Employee;
  * @author Max_Qiu
  */
 public class MiddleOperationOfScreenAndSliceTest {
-
     List<Employee> employeeList;
     {
         employeeList = new ArrayList<>();
@@ -70,5 +69,4 @@ public class MiddleOperationOfScreenAndSliceTest {
         // 注意：备操作的对象要重写 hashCode() 和 equals() 方法
         employeeList.stream().distinct().forEach(System.out::println);
     }
-
 }

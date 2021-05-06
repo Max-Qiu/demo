@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxqiu.demo.entity.Employee;
 
@@ -15,7 +15,6 @@ import com.maxqiu.demo.entity.Employee;
  * @author Max_Qiu
  */
 public class MiddleOperationOfMapTest {
-
     List<Employee> employeeList;
     {
         employeeList = new ArrayList<>();
@@ -64,5 +63,4 @@ public class MiddleOperationOfMapTest {
         }
         return list.stream();
     }
-
 }

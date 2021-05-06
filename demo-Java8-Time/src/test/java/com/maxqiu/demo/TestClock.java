@@ -5,7 +5,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 时钟

@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxqiu.demo.entity.Employee;
 import com.maxqiu.demo.entity.Status;
@@ -16,7 +16,6 @@ import com.maxqiu.demo.entity.Status;
  * @author Max_Qiu
  */
 public class TerminatingOperationOfReduceTest {
-
     List<Employee> employeeList;
     {
         employeeList = new ArrayList<>();
@@ -59,5 +58,4 @@ public class TerminatingOperationOfReduceTest {
             }).reduce(Integer::sum);
         System.out.println(sum.get());
     }
-
 }

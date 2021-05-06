@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxqiu.demo.Employee;
 
@@ -18,7 +18,6 @@ import com.maxqiu.demo.Employee;
  * @author Max_Qiu
  */
 public class MethodRefTest {
-
     /**
      * 对象 :: 实例方法
      */
@@ -98,5 +97,4 @@ public class MethodRefTest {
         Function<Employee, String> fun2 = Employee::show;
         System.out.println(fun2.apply(new Employee()));
     }
-
 }

@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxqiu.demo.Employee;
 
@@ -51,5 +51,4 @@ public class ConstructorRefTest {
         BiFunction<String, Integer, Employee> biFun2 = Employee::new;
         System.out.println(biFun2.apply("bbb", 18));
     }
-
 }

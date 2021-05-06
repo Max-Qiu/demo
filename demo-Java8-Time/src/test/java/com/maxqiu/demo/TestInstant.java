@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Instant : 时间戳。 （使用 Unix 元年 1970年1月1日 00:00:00 至某个时间所经历的毫秒值）
@@ -13,7 +13,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class TestInstant {
-
     @Test
     public void testInstantAndOffsetDateTime() {
         // 默认使用 UTC 时区

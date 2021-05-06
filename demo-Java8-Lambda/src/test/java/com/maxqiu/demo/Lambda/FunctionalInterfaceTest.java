@@ -8,7 +8,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Java8 内置的四大核心函数式接口
@@ -24,7 +24,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class FunctionalInterfaceTest {
-
     @Test
     public void test1() {
         happy(10000, (m) -> System.out.println("传入的参数是：" + m));
@@ -114,5 +113,4 @@ public class FunctionalInterfaceTest {
         }
         return strList;
     }
-
 }

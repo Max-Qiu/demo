@@ -4,7 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalAdjusters;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 时间调节器（修改时间）
@@ -12,7 +12,6 @@ import org.junit.Test;
  * @author Max_Qiu
  */
 public class TestTemporalAdjuster {
-
     /**
      * TemporalAdjusters : 官方实现的常用调节器
      */
