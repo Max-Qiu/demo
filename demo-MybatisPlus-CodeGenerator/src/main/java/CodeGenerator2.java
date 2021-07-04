@@ -1,3 +1,4 @@
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.ConstVal;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
@@ -10,10 +11,12 @@ import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.querys.MySqlQuery;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.baomidou.mybatisplus.generator.fill.Column;
+import com.baomidou.mybatisplus.generator.fill.Property;
 import com.baomidou.mybatisplus.generator.keywords.MySqlKeyWordsHandler;
 
 /**
- * 代码生成器简化版：关闭自动打开文件夹、删除模板中的日期、删除service接口、关闭乐观锁和逻辑删除以及自动填充
+ * 代码生成器简化版：关闭自动打开文件夹、删除模板中的日期、删除service接口、关闭乐观锁和逻辑删除
  *
  * 以 MySQL 为例
  *
@@ -137,6 +140,10 @@ public class CodeGenerator2 {
             .naming(NamingStrategy.underline_to_camel)
             // 数据库表字段映射到实体的命名策略（未指定按照 naming 执行）
             .columnNaming(NamingStrategy.underline_to_camel)
+            // 添加表字段填充（基于数据库字段）
+            .addTableFills(new Column("create_time", FieldFill.INSERT))
+            // 添加表字段填充（基于实体属性）
+            .addTableFills(new Property("updateTime", FieldFill.UPDATE))
             // 开启 ActiveRecord 模式
             .enableActiveRecord();
 

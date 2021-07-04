@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 #if(${entityLombokModel})
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 #if(${chainModel})
 import lombok.experimental.Accessors;
 #end
@@ -22,6 +23,7 @@ import java.io.Serializable;
  */
 #if(${entityLombokModel})
 @Data
+@NoArgsConstructor
   #if(${superEntityClass})
 @EqualsAndHashCode(callSuper = true)
   #else
