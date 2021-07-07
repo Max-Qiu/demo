@@ -26,7 +26,7 @@ import com.baomidou.mybatisplus.generator.keywords.MySqlKeyWordsHandler;
  * 
  * 3. 删除 iservice 文件夹
  *
- * 4. 拷贝代码至自己的项目
+ * 4. 拷贝代码至自己的项目，拷贝 AutoFillMetaObjectHandler 至自己项目（若关闭自动填充则忽略）
  *
  * PS 代码生成后推荐格式化一下，毕竟模板中可能有多余的空行或者空格或者import顺序不一样等等
  *
