@@ -1,10 +1,11 @@
+package com.maxqiu.demo;
+
 import java.time.LocalDateTime;
 
 /**
  * @author Max_Qiu
  */
 public class TestRunnable implements Runnable {
-
     private final Integer id;
 
     public TestRunnable(Integer id) {

@@ -1,16 +1,17 @@
+package com.maxqiu.demo;
+
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 自定义处理机制
- * 
+ *
  * @author Max_Qiu
  */
 public class CustomPolicy implements RejectedExecutionHandler {
-
     /**
      * 处理线程
-     * 
+     *
      * @param r
      *            需要处理的线程
      * @param executor

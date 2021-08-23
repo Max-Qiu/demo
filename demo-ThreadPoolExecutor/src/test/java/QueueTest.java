@@ -5,6 +5,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.Test;
 
+import com.maxqiu.demo.CustomPolicy;
+import com.maxqiu.demo.CustomThreadFactory;
+import com.maxqiu.demo.TestRunnable;
+
 /**
  * 参考链接：http://www.crazyant.net/2124.html<br>
  *
@@ -191,7 +195,7 @@ public class QueueTest {
 
     /**
      * 线程池和队列已满的情况下<br>
-     * CustomPolicy 自定义处理策略<br>
+     * com.maxqiu.demo.CustomPolicy 自定义处理策略<br>
      * 如果执行程序尚未关闭，则队列头部的任务将被删除，并在队列尾部添加当前任务
      */
     @Test
@@ -227,7 +231,7 @@ public class QueueTest {
         System.out.println("ThreadPool start create");
         for (int i = 1; i <= 20; i++) {
             threadPoolExecutor.execute(new TestRunnable(i));
-            System.out.println(threadPoolExecutor.toString() + "  " + i);
+            System.out.println(threadPoolExecutor + "  " + i);
             Thread.sleep(100);
         }
         // 0. 创建20个任务
