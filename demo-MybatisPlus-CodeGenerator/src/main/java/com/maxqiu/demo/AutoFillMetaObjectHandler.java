@@ -43,6 +43,8 @@ public class AutoFillMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void updateFill(MetaObject metaObject) {
+        // 更新时间每次更新时都需要修改，MetaObjectHandler默认不覆盖已存在值的字段，所以需要手动设置为null
+        metaObject.setValue("updateTime", null);
         // 自动插入修改时间
         this.strictUpdateFill(metaObject, "updateTime",
             () -> LocalDateTime.parse(LocalDateTime.now().format(FORMATTER), FORMATTER), LocalDateTime.class);
