@@ -1,4 +1,3 @@
-import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
@@ -9,8 +8,6 @@ import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.querys.MySqlQuery;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.baomidou.mybatisplus.generator.fill.Column;
-import com.baomidou.mybatisplus.generator.fill.Property;
 import com.baomidou.mybatisplus.generator.keywords.MySqlKeyWordsHandler;
 
 /**
@@ -19,7 +16,7 @@ import com.baomidou.mybatisplus.generator.keywords.MySqlKeyWordsHandler;
  * 以 MySQL 为例
  *
  * 1. 修改最重要的设置
- * 
+ *
  * 2. 确认是否需要启用乐观锁、逻辑删除，本配置默认启用（详见实体策略配置）
  *
  * 3. 运行 generator
@@ -70,8 +67,8 @@ public class CodeGenerator {
         GlobalConfig globalConfig = new GlobalConfig.Builder()
             // 覆盖已有文件（默认false）
             .fileOverride()
-            // 生成后打开文件夹（默认true）
-            .openDir(true)
+            // 关闭生成后自动打开文件夹（默认true）
+            .disableOpenDir()
             // 开启 kotlin 模式
             // .enableKotlin()
             // 开启 swagger 模式
@@ -119,7 +116,7 @@ public class CodeGenerator {
             // 实体模板路径(JAVA)
             .entity("mybatis/entity.java")
             // service模板路径
-            .service("mybatis/service.java", "mybatis/serviceImpl.java")
+            .service("mybatis/service.java").serviceImpl("mybatis/serviceImpl.java")
             // mapper模板路径
             .mapper("mybatis/mapper.java")
             // mapperXml模板路径
@@ -145,8 +142,8 @@ public class CodeGenerator {
 
         // 实体策略配置
         strategyConfigBuilder.entityBuilder()
-            // 开启生成serialVersionUID
-            .enableSerialVersionUID()
+            // 关闭生成serialVersionUID（默认true）
+            // .disableSerialVersionUID()
             // 开启链式模型，即实体可以连续set，例：.setXxx().setXxx();
             .enableChainModel()
             // 开启lombok模型
@@ -155,6 +152,8 @@ public class CodeGenerator {
             .enableRemoveIsPrefix()
             // 开启生成实体时生成字段注解，即每个字段都设置 @TableId/@TableField
             .enableTableFieldAnnotation()
+            // 开启 ActiveRecord 模式
+            .enableActiveRecord()
             // 乐观锁数据库表字段名称（数据库）
             // .versionColumnName("version")
             // 乐观锁实体属性字段名称（实体）
@@ -167,12 +166,10 @@ public class CodeGenerator {
             .naming(NamingStrategy.underline_to_camel)
             // 数据库表字段映射到实体的命名策略（未指定按照 naming 执行）
             .columnNaming(NamingStrategy.underline_to_camel)
-            // 添加表字段填充（基于数据库字段）
-            .addTableFills(new Column("create_time", FieldFill.INSERT))
-            // 添加表字段填充（基于实体属性）
-            .addTableFills(new Property("updateTime", FieldFill.UPDATE))
-            // 开启 ActiveRecord 模式
-            .enableActiveRecord()
+        // 添加表字段填充（基于数据库字段）
+        // .addTableFills(new Column("create_time", FieldFill.INSERT))
+        // 添加表字段填充（基于实体属性）
+        // .addTableFills(new Property("updateTime", FieldFill.UPDATE))
         // 全局主键策略 自增、空、手动输入、雪花ID、UUID。。。等（不建议设置，如果是自增则会自动添加注解，其他情况手动指定）
         // .idType(IdType.AUTO)
         // 转换文件名称
@@ -182,6 +179,8 @@ public class CodeGenerator {
         ;
 
         strategyConfigBuilder.mapperBuilder()
+        // 开启 @Mapper 注解
+        // .enableMapperAnnotation()
         // 开启baseResultMap
         // .enableBaseResultMap()
         // 开启baseColumnList

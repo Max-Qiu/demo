@@ -16,17 +16,17 @@ import com.baomidou.mybatisplus.generator.fill.Property;
 import com.baomidou.mybatisplus.generator.keywords.MySqlKeyWordsHandler;
 
 /**
- * 代码生成器简化版：关闭自动打开文件夹、删除模板中的日期、删除service接口、关闭乐观锁和逻辑删除
+ * 代码生成器简化版：删除模板中的日期、删除service接口、关闭乐观锁和逻辑删除
  *
  * 以 MySQL 为例
  *
  * 1. 修改最重要的设置
- * 
+ *
  * 2. 运行 generator
- * 
+ *
  * 3. 删除 iservice 文件夹
  *
- * 4. 拷贝代码至自己的项目，拷贝 AutoFillMetaObjectHandler 至自己项目（若关闭自动填充则忽略）
+ * 4. 拷贝代码至自己的项目
  *
  * PS 代码生成后推荐格式化一下，毕竟模板中可能有多余的空行或者空格或者import顺序不一样等等
  *
@@ -72,8 +72,8 @@ public class CodeGenerator2 {
         GlobalConfig globalConfig = new GlobalConfig.Builder()
             // 覆盖已有文件（默认false）
             .fileOverride()
-            // 生成后打开文件夹（默认true）
-            .openDir(false)
+            // 关闭生成后自动打开文件夹（默认true）
+            .disableOpenDir()
             // 文件输出目录（默认D:\\tmp）
             .outputDir("demo-MybatisPlus-CodeGenerator\\src\\main\\java")
             // 作者
@@ -105,7 +105,7 @@ public class CodeGenerator2 {
             // 实体模板路径(JAVA)
             .entity("mybatis2/entity.java")
             // service模板路径
-            .service("mybatis2/service.java", "mybatis2/serviceImpl.java")
+            .service("mybatis2/service.java").serviceImpl("mybatis2/serviceImpl.java")
             // mapper模板路径
             .mapper("mybatis2/mapper.java")
             // mapperXml模板路径
@@ -127,7 +127,7 @@ public class CodeGenerator2 {
         // 实体策略配置
         strategyConfigBuilder.entityBuilder()
             // 开启生成serialVersionUID
-            .enableSerialVersionUID()
+            // .disableSerialVersionUID()
             // 开启链式模型，即实体可以连续set，例：.setXxx().setXxx();
             .enableChainModel()
             // 开启lombok模型
