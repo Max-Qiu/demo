@@ -1,4 +1,3 @@
-import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.ConstVal;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
@@ -11,8 +10,6 @@ import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.querys.MySqlQuery;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.baomidou.mybatisplus.generator.fill.Column;
-import com.baomidou.mybatisplus.generator.fill.Property;
 import com.baomidou.mybatisplus.generator.keywords.MySqlKeyWordsHandler;
 
 /**
@@ -89,8 +86,6 @@ public class CodeGenerator2 {
         PackageConfig packageConfig = new PackageConfig.Builder()
             // 包名
             .parent(PARENT)
-            // service接口包名（默认service）
-            .service("iservice")
             // service实现类包名（默认service.impl）
             .serviceImpl("service")
             // 构建包配置对象
@@ -98,14 +93,12 @@ public class CodeGenerator2 {
 
         // 模板路径配置
         TemplateConfig templateConfig = new TemplateConfig.Builder()
-            // 禁用所有模板
-            // .disable()
-            // 禁用指定模板
+            // 禁用service
             .disable(TemplateType.SERVICE)
             // 实体模板路径(JAVA)
             .entity("mybatis2/entity.java")
-            // service模板路径
-            .service("mybatis2/service.java").serviceImpl("mybatis2/serviceImpl.java")
+            // serviceImpl模板路径
+            .serviceImpl("mybatis2/serviceImpl.java")
             // mapper模板路径
             .mapper("mybatis2/mapper.java")
             // mapperXml模板路径
@@ -126,8 +119,6 @@ public class CodeGenerator2 {
 
         // 实体策略配置
         strategyConfigBuilder.entityBuilder()
-            // 开启生成serialVersionUID
-            // .disableSerialVersionUID()
             // 开启链式模型，即实体可以连续set，例：.setXxx().setXxx();
             .enableChainModel()
             // 开启lombok模型
@@ -140,10 +131,6 @@ public class CodeGenerator2 {
             .naming(NamingStrategy.underline_to_camel)
             // 数据库表字段映射到实体的命名策略（未指定按照 naming 执行）
             .columnNaming(NamingStrategy.underline_to_camel)
-            // 添加表字段填充（基于数据库字段）
-            .addTableFills(new Column("create_time", FieldFill.INSERT))
-            // 添加表字段填充（基于实体属性）
-            .addTableFills(new Property("updateTime", FieldFill.UPDATE))
             // 开启 ActiveRecord 模式
             .enableActiveRecord();
 
