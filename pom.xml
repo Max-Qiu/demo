@@ -19,7 +19,7 @@
     <modules>
         <module>demo-DesignPattern</module>
         <module>demo-DesignPrinciple</module>
-        <module>demo-elasticsearch</module>
+        <module>demo-Elasticsearch</module>
         <module>demo-Java8-Lambda</module>
         <module>demo-Java8-Stream</module>
         <module>demo-Java8-Time</module>
@@ -44,6 +44,10 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -56,7 +60,12 @@
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter</artifactId>
-                <version>5.7.1</version>
+                <version>5.8.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>5.8.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
