@@ -27,6 +27,7 @@
         <module>demo-juc</module>
         <module>demo-MyBatis</module>
         <module>demo-MybatisPlus-CodeGenerator</module>
+        <module>demo-Poster</module>
         <module>demo-quene</module>
         <module>demo-RabbitMQ</module>
         <module>demo-socket1</module>
