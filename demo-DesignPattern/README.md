@@ -1,9 +1,4 @@
-> 本系列文档整理自视频教程：[尚硅谷_图解Java设计模式](http://www.atguigu.com/download_detail.shtml?v=202)
-
-个人整理示例代码：
-
-- GitHub：[https://github.com/Max-Qiu/demo/tree/main/demo-DesignPattern](https://github.com/Max-Qiu/demo/tree/main/demo-DesignPattern)
-- Gitee：[https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPattern](https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPattern)
+本系列文档整理自视频教程：[尚硅谷_图解Java设计模式](http://www.atguigu.com/download_detail.shtml?v=202)
 
 > 推荐阅读：[漫画：什么是 “设计模式” ？](https://mp.weixin.qq.com/s/XpeT7OOkXRBFSuCv7XG_NA)
 

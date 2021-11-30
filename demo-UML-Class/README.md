@@ -1,16 +1,13 @@
-> PS：本文档为个人整理，学艺不精，如有错误，请留言指出。部分内容整理自视频教程：
-
-[尚硅谷_图解Java设计模式](http://www.atguigu.com/download_detail.shtml?v=202)
+> PS：本文档为个人整理，学艺不精，如有错误，请留言指出。部分内容整理自视频教程：[尚硅谷_图解Java设计模式](http://www.atguigu.com/download_detail.shtml?v=202)
 
 # 安装UML插件
 
-idea安装PlantUML插件，idea插件市场：[PlantUML integration](https://plugins.jetbrains.com/plugin/7017-plantuml-integration)
-
-eclipse安装PlantUML插件，官方教程：[Integration with Eclipse](https://plantuml.com/zh/eclipse)
-
-PlantUML语法官方文档：[类图的语法和功能](https://plantuml.com/zh/class-diagram)
+- idea安装PlantUML插件，idea插件市场：[PlantUML integration](https://plugins.jetbrains.com/plugin/7017-plantuml-integration)
+- eclipse安装PlantUML插件，官方教程：[Integration with Eclipse](https://plantuml.com/zh/eclipse)
 
 # 基础语法
+
+PlantUML语法官方文档：[类图的语法和功能](https://plantuml.com/zh/class-diagram)
 
 ## 定义类/接口/抽象类/枚举/属性/方法
 

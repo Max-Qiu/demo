@@ -1,10 +1,4 @@
-> 本文档整理自视频教程：
-
-[尚硅谷_图解Java设计模式](http://www.atguigu.com/download_detail.shtml?v=202)
-
-> 示例代码：
-GitHub：[https://github.com/Max-Qiu/demo/tree/main/demo-DesignPrinciple](https://github.com/Max-Qiu/demo/tree/main/demo-DesignPrinciple)
-Gitee：[https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPrinciple](https://gitee.com/Max-Qiu/demo/tree/main/demo-DesignPrinciple)
+> 本文档整理自视频教程：[尚硅谷_图解Java设计模式](http://www.atguigu.com/download_detail.shtml?v=202)
 
 # 设计原则核心思想
 
