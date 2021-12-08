@@ -13,7 +13,6 @@ ProducterAndConsumer | synchronized 实现生产者和消费者
 ProducterAndConsumerForLock | Lock 实现生产者和消费者
 ABC | Condition控制线程通信
 ReadWriteLock | 读写锁
-Synchronized | 线程八锁
 ThreadPool | 线程池/线程调度
 ForkJoin | 分支/合并框架工作窃取
 
