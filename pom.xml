@@ -35,6 +35,7 @@
         <module>demo-synchronized</module>
         <module>demo-ThreadPoolExecutor</module>
         <module>demo-UML-Class</module>
+        <module>demo-volatile</module>
     </modules>
 
     <dependencies>
