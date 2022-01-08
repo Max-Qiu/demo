@@ -2,7 +2,6 @@
 
 Package | Explain
 ---|---
-Volatile | 内存可见性
 Atomic | 原子变量
 CompareAndSwap | CAS算法
 CopyOnWrite | 并发读写
@@ -15,7 +14,3 @@ ABC | Condition控制线程通信
 ReadWriteLock | 读写锁
 ThreadPool | 线程池/线程调度
 ForkJoin | 分支/合并框架工作窃取
-
-`synchronized`可以参考：[demo-synchronized](https://github.com/Max-Qiu/demo/tree/main/demo-synchronized)
-
-`ThreadPool`可以参考：[demo-ThreadPoolExecutor](https://github.com/Max-Qiu/demo/tree/main/demo-ThreadPoolExecutor)
