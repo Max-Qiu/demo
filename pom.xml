@@ -17,6 +17,7 @@
     </properties>
 
     <modules>
+        <module>demo-Atomic</module>
         <module>demo-DesignPattern</module>
         <module>demo-DesignPrinciple</module>
         <module>demo-Elasticsearch</module>
