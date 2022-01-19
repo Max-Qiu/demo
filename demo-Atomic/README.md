@@ -1,6 +1,7 @@
 > 参考教程
 
 - `JavaGuide`：[Java 并发常见知识点&面试题总结（进阶篇）](https://javaguide.cn/java/concurrent/java并发进阶常见面试题总结/)
+- `JavaGuide`：[Atomic 原子类总结](https://javaguide.cn/java/concurrent/atomic原子类总结/)
 - `尚硅谷`：[互联网大厂高频重点面试题（第2季）](http://www.atguigu.com/download_detail.shtml?v=130)
 
 ---
@@ -15,13 +16,14 @@
 
 并发包`JUC(java.util.concurrent)`的原子类都在`java.util.concurrent.atomic`中
 
-# 验证
+# 示例
 
 运行如下代码：
 
 ```java
 public class AtomicTest {
-    public static void main(String[] args) {
+    @Test
+    void test() {
         Date date = new Date();
 
         for (int i = 0; i < 10; i++) {
@@ -34,6 +36,7 @@ public class AtomicTest {
         }
 
         while (Thread.activeCount() > 2) {
+            // 让出当前线程，给其他线程执行
             Thread.yield();
         }
 
@@ -65,7 +68,508 @@ main	 over! atomicNum :  	10000
 
 # 分类
 
+- **基本类型**：使用原子的方式更新基本类型
+    - `AtomicInteger`：整型原子类
+    - `AtomicLong`：长整型原子类
+    - `AtomicBoolean`：布尔型原子类 
+- **数组类型**：使用原子的方式更新数组里的某个元素
+    - `AtomicIntegerArray`：整型数组原子类
+    - `AtomicLongArray`：长整型数组原子类
+    - `AtomicReferenceArray`：引用类型数组原子类
+- **引用类型**：用于包装对象
+    - `AtomicReference`：引用类型原子类
+    - `AtomicMarkableReference`：原子更新带有标记的引用类型。该类将`boolean`标记与引用关联起来
+    - `AtomicStampedReference`：原子更新带有版本号的引用类型。该类将整数值与引用关联起来，可用于解决原子的更新数据和数据的版本号，可以解决使用`CAS`进行原子更新时可能出现的`ABA`问题
+- **对象的属性修改类型**
+    - `AtomicIntegerFieldUpdater`：原子更新整型字段的更新器
+    - `AtomicLongFieldUpdater`：原子更新长整型字段的更新器
+    - `AtomicReferenceFieldUpdater`：原子更新引用类型里的字段
+
 # 常用方法
+
+## 基本类型原子类（以`AtomicInteger`为例）
+
+> 代码
+
+```java
+public class AtomicIntegerTest {
+    @Test
+    void test() {
+        // 无参构造：默认值为0
+        // AtomicInteger atomic = new AtomicInteger();
+        // 有参构造：初始化传入初始值，
+        AtomicInteger atomic = new AtomicInteger(1);
+
+        System.out.println("获取当前值：" + atomic.get());
+
+        System.out.println("\n设置值");
+        atomic.set(5);
+        System.out.println("新值：" + atomic.get());
+
+        System.out.println("\n获取当前值，并设置新值");
+        System.out.println("原始：" + atomic.getAndSet(2));
+        System.out.println("新值：" + atomic.get());
+
+        System.out.println("\n获取当前值，并增加值");
+        System.out.println("原始：" + atomic.getAndAdd(2));
+        System.out.println("新值：" + atomic.get());
+
+        System.out.println("\n增加值，并获取结果");
+        System.out.println("新值：" + atomic.addAndGet(2));
+
+        System.out.println("\n获取当前值，并自增");
+        System.out.println("原始：" + atomic.getAndIncrement());
+        System.out.println("新值：" + atomic.get());
+
+        System.out.println("\n获取当前值，并自减");
+        System.out.println("原始：" + atomic.getAndDecrement());
+        System.out.println("新值：" + atomic.get());
+
+        System.out.println("\n自增后，获取当前值，相当于 ++i");
+        System.out.println("新值：" + atomic.incrementAndGet());
+
+        System.out.println("\n自减后，获取当前值，相当于 --i");
+        System.out.println("新值：" + atomic.decrementAndGet());
+
+        System.out.println("\n比较并修改值");
+        int i = atomic.get();
+        System.out.println("原始：" + i);
+        System.out.println("修改结果1：" + atomic.compareAndSet(i, 8) + "\t值：" + atomic.get());
+        System.out.println("修改结果2：" + atomic.compareAndSet(i, 8) + "\t值：" + atomic.get());
+
+        System.out.println("\n转换");
+        System.out.println(atomic.intValue());
+        System.out.println(atomic.longValue());
+        System.out.println(atomic.floatValue());
+        System.out.println(atomic.doubleValue());
+    }
+}
+```
+
+> 输出如下
+
+```bash
+获取当前值：1
+
+设置值
+新值：5
+
+获取当前值，并设置新值
+原始：5
+新值：2
+
+获取当前值，并增加值
+原始：2
+新值：4
+
+增加值，并获取结果
+新值：6
+
+获取当前值，并自增
+原始：6
+新值：7
+
+获取当前值，并自减
+原始：7
+新值：6
+
+自增后，获取当前值，相当于 ++i
+新值：7
+
+自减后，获取当前值，相当于 --i
+新值：6
+
+比较并修改值
+原始：6
+修改结果1：true 	值：8
+修改结果2：false	值：8
+
+转换
+8
+8
+8.0
+8.0
+```
+
+## 数组类型原子类（以`AtomicIntegerArray`为例）
+
+> 代码
+
+```java
+public class AtomicIntegerArrayTest {
+    @Test
+    void test() {
+        // 有参构造：指定数组长度，数组内初始值为0
+        // AtomicIntegerArray atomic = new AtomicIntegerArray(10);
+        // 有参构造：传入数组
+        AtomicIntegerArray atomic = new AtomicIntegerArray(new int[] {1, 2, 3, 4, 5});
+
+        System.out.println("数组的长度为：" + atomic.length());
+
+        System.out.println("\n获取指定位置的值");
+        for (int i = 0; i < atomic.length(); i++) {
+            System.out.println(i + "\t" + atomic.get(i));
+        }
+
+        System.out.println("\n更新指定位置值");
+        atomic.set(0, 2);
+        System.out.println("位置：" + 0 + "\t新值：" + atomic.get(0));
+
+        System.out.println("\n获取指定位置当前值，并设置新值");
+        System.out.println("位置：" + 0 + "\t原始：" + atomic.getAndSet(0, 2));
+        System.out.println("位置：" + 0 + "\t新值：" + atomic.get(0));
+
+        System.out.println("\n获取指定位置当前值，并增加值");
+        System.out.println("位置：" + 0 + "\t原始：" + atomic.getAndAdd(0, 2));
+        System.out.println("位置：" + 0 + "\t新值：" + atomic.get(0));
+
+        System.out.println("\n指定位置增加值，并获取结果");
+        System.out.println("位置：" + 0 + "\t新值：" + atomic.addAndGet(0, 2));
+
+        System.out.println("\n获取指定位置当前值，并自增");
+        System.out.println("位置：" + 0 + "\t原始：" + atomic.getAndIncrement(0));
+        System.out.println("位置：" + 0 + "\t新值：" + atomic.get(0));
+
+        System.out.println("\n获取指定位置当前值，并自减");
+        System.out.println("位置：" + 0 + "\t原始：" + atomic.getAndDecrement(0));
+        System.out.println("位置：" + 0 + "\t新值：" + atomic.get(0));
+
+        System.out.println("\n指定位置自增后，获取当前值，相当于 ++i");
+        System.out.println("位置：" + 0 + "\t新值：" + atomic.incrementAndGet(0));
+
+        System.out.println("\n指定位置自减后，获取当前值，相当于 --i");
+        System.out.println("位置：" + 0 + "\t新值：" + atomic.decrementAndGet(0));
+
+        System.out.println("\n指定位置比较并修改值");
+        int i = atomic.get(0);
+        System.out.println("位置：" + 0 + "\t原始：" + i);
+        System.out.println("位置：" + 0 + "\t修改结果1：" + atomic.compareAndSet(0, i, 8) + "\t值：" + atomic.get(0));
+        System.out.println("位置：" + 0 + "\t修改结果2：" + atomic.compareAndSet(0, i, 8) + "\t值：" + atomic.get(0));
+    }
+}
+```
+
+> 输出
+
+```bash
+数组的长度为：5
+
+获取指定位置的值
+0	1
+1	2
+2	3
+3	4
+4	5
+
+更新指定位置值
+位置：0	新值：2
+
+获取指定位置当前值，并设置新值
+位置：0	原始：2
+位置：0	新值：2
+
+获取指定位置当前值，并增加值
+位置：0	原始：2
+位置：0	新值：4
+
+指定位置增加值，并获取结果
+位置：0	新值：6
+
+获取指定位置当前值，并自增
+位置：0	原始：6
+位置：0	新值：7
+
+获取指定位置当前值，并自减
+位置：0	原始：7
+位置：0	新值：6
+
+指定位置自增后，获取当前值，相当于 ++i
+位置：0	新值：7
+
+指定位置自减后，获取当前值，相当于 --i
+位置：0	新值：6
+
+指定位置比较并修改值
+位置：0	原始：6
+位置：0	修改结果1：true 	值：8
+位置：0	修改结果2：false	值：8
+```
+
+## 引用类型原子类
+
+> 引用类型用于修改对象，对象示例如下：
+
+```java
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class Person {
+    private String name;
+    private Integer age;
+}
+```
+
+### `AtomicReference`
+
+> 代码
+
+```java
+public class AtomicReferenceTest {
+    @Test
+    void test() {
+        // 无参构造：默认null
+        // AtomicReference<Person> atomic = new AtomicReference<>();
+        // 有参构造：传入初始对象
+        AtomicReference<Person> atomic = new AtomicReference<>(new Person("张三", 25));
+
+        System.out.println("获取当前值：" + atomic.get());
+
+        System.out.println("\n设置值");
+        atomic.set(new Person("李四", 30));
+        System.out.println("新值：" + atomic.get());
+
+        System.out.println("\n获取当前值，并设置新值");
+        System.out.println("原始：" + atomic.getAndSet(new Person("王五", 35)));
+        System.out.println("新值：" + atomic.get());
+
+        System.out.println("\n比较并修改值");
+        Person oldP = atomic.get();
+        Person newP = new Person("赵六", 40);
+        System.out.println("原始：" + oldP);
+        System.out.println("修改结果1：" + atomic.compareAndSet(oldP, newP) + "\t值：" + atomic.get());
+        System.out.println("修改结果2：" + atomic.compareAndSet(oldP, newP) + "\t值：" + atomic.get());
+    }
+}
+```
+
+> 输出
+
+```bash
+获取当前值：Person(name=张三, age=25)
+
+设置值
+新值：Person(name=李四, age=30)
+
+获取当前值，并设置新值
+原始：Person(name=李四, age=30)
+新值：Person(name=王五, age=35)
+
+比较并修改值
+原始：Person(name=王五, age=35)
+修改结果1：true 	值：Person(name=赵六, age=40)
+修改结果2：false	值：Person(name=赵六, age=40)
+```
+
+### `AtomicMarkableReference`
+
+> 代码
+
+```java
+public class AtomicMarkableReferenceTest {
+    @Test
+    void test() {
+        // 有参构造：初始化对象和标记
+        AtomicMarkableReference<Person> atomic = new AtomicMarkableReference<>(new Person("张三", 18), false);
+
+        System.out.println("取值：");
+        System.out.println("对象：" + atomic.getReference());
+        System.out.println("标记：" + atomic.isMarked());
+
+        System.out.println("\n获取当前值并同时将标记存储在boolean类型的数组中（数组长度至少为1）");
+        boolean[] arr = new boolean[1];
+        System.out.println("对象：" + atomic.get(arr));
+        System.out.println("标记：" + arr[0]);
+
+        System.out.println("\n设置值和标记");
+        Person person = new Person("李四", 30);
+        atomic.set(person, true);
+        System.out.println("新对象：" + atomic.getReference());
+        System.out.println("新标记：" + atomic.isMarked());
+
+        System.out.println("\n当对象相同时，单独修改标记");
+        System.out.println("原标记：" + atomic.isMarked());
+        System.out.println("修改结果：" + atomic.attemptMark(person, false));
+        System.out.println("新标记：" + atomic.isMarked());
+
+        System.out.println("\n比较并修改值");
+        Person oldP = atomic.getReference();
+        boolean oldF = atomic.isMarked();
+        Person newP = new Person("王五", 45);
+        boolean newF = false;
+        System.out.println("修改结果1：" + atomic.compareAndSet(oldP, newP, oldF, newF));
+        System.out.println("对象：" + atomic.getReference());
+        System.out.println("标记：" + atomic.isMarked());
+        System.out.println("修改结果2：" + atomic.compareAndSet(oldP, newP, oldF, newF));
+        System.out.println("对象：" + atomic.getReference());
+        System.out.println("标记：" + atomic.isMarked());
+
+    }
+}
+```
+
+> 输出
+
+```bash
+取值：
+对象：Person(name=张三, age=18)
+标记：false
+
+获取当前值并同时将标记存储在boolean类型的数组中（数组长度至少为1）
+对象：Person(name=张三, age=18)
+标记：false
+
+设置值和标记
+新对象：Person(name=李四, age=30)
+新标记：true
+
+当对象相同时，单独修改标记
+原标记：true
+修改结果：true
+新标记：false
+
+比较并修改值
+修改结果1：true
+对象：Person(name=王五, age=45)
+标记：false
+修改结果2：false
+对象：Person(name=王五, age=45)
+标记：false
+```
+
+### `AtomicReference`
+
+> 代码
+
+```java
+public class AtomicStampedReferenceTest {
+    @Test
+    void test() {
+        // 有参构造：初始化对象和标记
+        AtomicStampedReference<Person> atomic = new AtomicStampedReference<>(new Person("张三", 18), 1);
+
+        System.out.println("取值：");
+        System.out.println("对象：" + atomic.getReference());
+        System.out.println("版本：" + atomic.getStamp());
+
+        System.out.println("\n获取当前值并同时将标记存储在boolean类型的数组中（数组长度至少为1）");
+        int[] arr = new int[1];
+        System.out.println("对象：" + atomic.get(arr));
+        System.out.println("版本：" + arr[0]);
+
+        System.out.println("\n设置值和版本");
+        Person person = new Person("李四", 30);
+        atomic.set(person, 2);
+        System.out.println("新对象：" + atomic.getReference());
+        System.out.println("新版本：" + atomic.getStamp());
+
+        System.out.println("\n当对象相同时，单独修改版本");
+        System.out.println("原版本：" + atomic.getStamp());
+        System.out.println("修改结果：" + atomic.attemptStamp(person, 3));
+        System.out.println("新版本：" + atomic.getStamp());
+
+        System.out.println("\n比较并修改值");
+        Person oldP = atomic.getReference();
+        int oldV = atomic.getStamp();
+        Person newP = new Person("王五", 45);
+        int newV = 4;
+        System.out.println("修改结果1：" + atomic.compareAndSet(oldP, newP, oldV, newV));
+        System.out.println("对象：" + atomic.getReference());
+        System.out.println("版本：" + atomic.getStamp());
+        System.out.println("修改结果2：" + atomic.compareAndSet(oldP, newP, oldV, newV));
+        System.out.println("对象：" + atomic.getReference());
+        System.out.println("版本：" + atomic.getStamp());
+    }
+}
+```
+
+> 输出
+
+```bash
+取值：
+对象：Person(name=张三, age=18)
+版本：1
+
+获取当前值并同时将标记存储在boolean类型的数组中（数组长度至少为1）
+对象：Person(name=张三, age=18)
+版本：1
+
+设置值和版本
+新对象：Person(name=李四, age=30)
+新版本：2
+
+当对象相同时，单独修改版本
+原版本：2
+修改结果：true
+新版本：3
+
+比较并修改值
+修改结果1：true
+对象：Person(name=王五, age=45)
+版本：4
+修改结果2：false
+对象：Person(name=王五, age=45)
+版本：4
+```
+
+## 对象的属性修改器
+
+如果需要原子更新某个类里的某个字段时，需要用到对象的属性修改原子类。
+
+> 代码
+
+```java
+public class AtomicFieldUpdaterTest {
+    @Test
+    void test() {
+        // 整形字段的更新器
+        // 使用静态方法创建更新器，第一个参数为对象类型，第二个参数为要更新的字段名称，该字段必须修饰为 public volatile
+        AtomicIntegerFieldUpdater<User1> integerUpdater = AtomicIntegerFieldUpdater.newUpdater(User1.class, "age");
+        User1 user1 = new User1("Java", 22);
+        // 获取当前对象被管理字段的值并原子自增
+        System.out.println(integerUpdater.getAndIncrement(user1));
+        // 获取当前对象被管理字段的值
+        System.out.println(integerUpdater.get(user1));
+
+        // 引用类型字段的更新器
+        // 使用静态方法创建更新器，第一个参数为对象类型，第二个参数为要更新的字段类型，第三个参数为要更新的字段名称，该字段必须修饰为 public volatile
+        AtomicReferenceFieldUpdater<User2, Integer> referenceUpdater = AtomicReferenceFieldUpdater.newUpdater(User2.class, Integer.class, "age");
+        User2 user2 = new User2("Jerry", 18);
+        // 获取当前对象被管理字段的值并设置新值
+        System.out.println(referenceUpdater.getAndSet(user2, 20));
+        // 获取当前对象被管理字段的值
+        System.out.println(referenceUpdater.get(user2));
+    }
+}
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+class User1 {
+    private String name;
+    public volatile int age;
+}
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+class User2 {
+    private String name;
+    public volatile Integer age;
+}
+```
+
+> 输出
+
+```bash
+22
+23
+18
+20
+```
 
 # 底层原理
 
@@ -167,3 +671,114 @@ UNSAFE_END
 1. 循环时间长开销很大：源码中有一个`do while`，如果`CAS`一直失败，会给`CPU`带来很大开销
 2. 只能保证一个共享变量的原子操作：对多个共享变量操作时，无法保证操作的原子性
 3. 会出现ABA问题
+
+## ABA的问题解决
+
+> ABA问题的产生
+
+`CAS`算法实现一个重要前提是需要取出内存中某时刻的数据并在当下时刻比较并替换，那么在这个时间差类会导致数据的变化。比如说线程A、线程B从内存中取出V1，然后线程B进行了一些操作将值变成了V2然后又进行一些操作将值变回V1，这时候线程A进行CAS操作发现内存中仍然是V1，然后线程A操作成功。尽管线程A的CAS操作成功，但是不代表这个过程就是没有问题的。
+
+> ABA问题的解决
+
+只需要使用带有版本控制的原子类`AtomicStampedReference`即可
+
+> 代码
+
+```java
+public class ABATest {
+    /**
+     * 普通的对象引用原子类，不能解决ABA问题
+     */
+    @Test
+    void atomicReference() {
+        AtomicReference<Integer> atomicReference = new AtomicReference<>(100);
+
+        new Thread(() -> {
+            atomicReference.compareAndSet(100, 101);
+            atomicReference.compareAndSet(101, 100);
+        }, "t1").start();
+        new Thread(() -> {
+            // 暂停一会t2线程，保证上面的t1线程完成了一次ABA操作
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(atomicReference.compareAndSet(100, 2019));
+        }, "t2").start();
+
+        // 等待线程结束
+        while (Thread.activeCount() > 2) {
+            // 让出当前线程，给其他线程执行
+            Thread.yield();
+        }
+
+        System.out.println(atomicReference.get());
+    }
+
+    /**
+     * 带版本控制的对象引用原子类，可以解决ABA的问题
+     */
+    @Test
+    void atomicStampedReference() {
+        AtomicStampedReference<Integer> atomicStampedReference = new AtomicStampedReference<>(100, 1);
+        new Thread(() -> {
+            // 获取初始版本
+            int stamp = atomicStampedReference.getStamp();
+            System.out.println(Thread.currentThread().getName() + "\t第1次版本号：" + stamp);
+            // 暂停一会t1线程，保证t2线程获取到了初始版本号
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            atomicStampedReference.compareAndSet(100, 101, stamp, ++stamp);
+            System.out.println(Thread.currentThread().getName() + "\t第2次版本号：" + atomicStampedReference.getStamp());
+            atomicStampedReference.compareAndSet(101, 100, stamp, ++stamp);
+            System.out.println(Thread.currentThread().getName() + "\t第3次版本号：" + atomicStampedReference.getStamp());
+        }, "t1").start();
+
+        new Thread(() -> {
+            // 获取初始版本
+            int stamp = atomicStampedReference.getStamp();
+            System.out.println(Thread.currentThread().getName() + "\t第1次版本号：" + stamp);
+            // 暂停一会t2线程，保证上面的t3线程完成了一次ABA操作
+            try {
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            boolean result = atomicStampedReference.compareAndSet(100, 2019, stamp, ++stamp);
+            System.out.println(Thread.currentThread().getName() + "\t修改成功否：" + result);
+        }, "t2").start();
+
+        // 等待线程结束
+        while (Thread.activeCount() > 2) {
+            // 让出当前线程，给其他线程执行
+            Thread.yield();
+        }
+
+        System.out.println("当前最新实际版本号：" + atomicStampedReference.getStamp() + "\t当前实际最新值：" + atomicStampedReference.getReference());
+    }
+}
+```
+
+> 输出：
+
+不带版本控制的原子类`AtomicReference`会出现`ABA`问题
+
+```bash
+true
+2019
+```
+
+携带版本控制的原子类`AtomicStampedReference`可以解决`ABA`问题
+
+```bash
+t1	第1次版本号：1
+t2	第1次版本号：1
+t1	第2次版本号：2
+t1	第3次版本号：3
+t2	修改成功否：false
+当前最新实际版本号：3	当前实际最新值：100
+```

@@ -2,13 +2,16 @@ package com.maxqiu.demo;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * 测试 volatile 不保证原子性，以及 Atomic 保证原子性
  *
  * @author Max_Qiu
  */
 public class AtomicTest {
-    public static void main(String[] args) {
+    @Test
+    void test() {
         Date date = new Date();
 
         for (int i = 0; i < 10; i++) {
