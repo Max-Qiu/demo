@@ -2,8 +2,6 @@
 
 Package | Explain
 ---|---
-Atomic | 原子变量
-CompareAndSwap | CAS算法
 CopyOnWrite | 并发读写
 CountDownLatch | 闭锁
 Callable | 有返回值的线程
