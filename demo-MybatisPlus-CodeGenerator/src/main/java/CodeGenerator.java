@@ -65,8 +65,6 @@ public class CodeGenerator {
 
         // 全局配置
         GlobalConfig globalConfig = new GlobalConfig.Builder()
-            // 覆盖已有文件（默认false）
-            .fileOverride()
             // 关闭生成后自动打开文件夹（默认true）
             .disableOpenDir()
             // 开启 kotlin 模式
@@ -120,7 +118,7 @@ public class CodeGenerator {
             // mapper模板路径
             .mapper("mybatis/mapper.java")
             // mapperXml模板路径
-            .mapperXml("mybatis/mapper.xml")
+            .xml("mybatis/mapper.xml")
             // 控制器模板路径
             .controller("mybatis/controller.java")
             // 构建模板配置对象

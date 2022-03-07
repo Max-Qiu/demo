@@ -67,8 +67,6 @@ public class CodeGenerator2 {
 
         // 全局配置
         GlobalConfig globalConfig = new GlobalConfig.Builder()
-            // 覆盖已有文件（默认false）
-            .fileOverride()
             // 关闭生成后自动打开文件夹（默认true）
             .disableOpenDir()
             // 文件输出目录（默认D:\\tmp）
@@ -102,7 +100,7 @@ public class CodeGenerator2 {
             // mapper模板路径
             .mapper("mybatis2/mapper.java")
             // mapperXml模板路径
-            .mapperXml("mybatis2/mapper.xml")
+            .xml("mybatis2/mapper.xml")
             // 控制器模板路径
             .controller("mybatis2/controller.java")
             // 构建模板配置对象
