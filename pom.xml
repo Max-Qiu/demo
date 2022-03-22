@@ -25,6 +25,7 @@
         <module>demo-Java8-Lambda</module>
         <module>demo-Java8-Stream</module>
         <module>demo-Java8-Time</module>
+        <module>demo-JDBC</module>
         <module>demo-juc</module>
         <module>demo-MyBatis</module>
         <module>demo-MybatisPlus-CodeGenerator</module>
