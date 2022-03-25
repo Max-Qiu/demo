@@ -25,7 +25,7 @@ import com.maxqiu.demo.dao.EmployeeMapperPlus;
 // 1、接口式编程
 // 	原生：		Dao		====>  DaoImpl
 // 	mybatis：	Mapper	====>  xxMapper.xml
-// 
+//
 // 2、SqlSession代表和数据库的一次会话；用完必须关闭；
 // 3、SqlSession和connection一样她都是非线程安全。每次使用都应该去获取新的对象。
 // 4、mapper接口没有实现类，但是mybatis会为这个接口生成一个代理对象。
@@ -34,7 +34,7 @@ import com.maxqiu.demo.dao.EmployeeMapperPlus;
 // 5、两个重要的配置文件：
 // 		mybatis的全局配置文件：包含数据库连接池信息，事务管理器信息等...系统运行环境信息
 // 		sql映射文件：保存了每一个sql语句的映射信息：
-// 					将sql抽取出来。	
+// 					将sql抽取出来。
 // @formatter:on
 
 /**
@@ -49,7 +49,7 @@ public class MyBatisTest {
 
 // @formatter:off
 // 1、根据xml配置文件（全局配置文件）创建一个SqlSessionFactory对象 有数据源一些运行环境信息
-// 2、sql映射文件；配置了每一个sql，以及sql的封装规则等。 
+// 2、sql映射文件；配置了每一个sql，以及sql的封装规则等。
 // 3、将sql映射文件注册在全局配置文件中
 // 4、写代码：
 // 		1）、根据全局配置文件得到SqlSessionFactory；
@@ -59,7 +59,7 @@ public class MyBatisTest {
 // @formatter:on
 
     /**
-     * 
+     *
      */
     @Test
     void test() throws IOException {
@@ -71,7 +71,7 @@ public class MyBatisTest {
 
         SqlSession openSession = sqlSessionFactory.openSession();
         try {
-            Employee employee = openSession.selectOne("com.maxqiu.demo.EmployeeMapper.getEmpById", 1);
+            Employee employee = openSession.selectOne("com.maxqiu.demo.dao.EmployeeMapper.getEmpById", 1);
             System.out.println(employee);
         } finally {
             openSession.close();
@@ -117,7 +117,7 @@ public class MyBatisTest {
      * 2、我们需要手动提交数据<br>
      * sqlSessionFactory.openSession();===》手动提交<br>
      * sqlSessionFactory.openSession(true);===》自动提交
-     * 
+     *
      */
     @Test
     void test03() throws IOException {
