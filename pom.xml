@@ -12,8 +12,11 @@
     <properties>
         <!-- 修改 mvn clean package 的默认编码 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- 指定jdk版本 -->
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
     <modules>
@@ -75,20 +78,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <compilerArgument>-parameters</compilerArgument>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

@@ -10,4 +10,20 @@
     </parent>
 
     <artifactId>demo-Poster</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <compilerArgs>
+                        <!-- 在 jdk11 下支持 FontDesignMetrics -->
+                        <arg>--add-exports=java.desktop/sun.font=ALL-UNNAMED</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
