@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 #if(${entityLombokModel})
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 #if(${chainModel})
 import lombok.experimental.Accessors;
@@ -25,6 +26,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
   #if(${chainModel})
 @Accessors(chain = true)
   #end

@@ -86,6 +86,8 @@ public class CodeGenerator2 {
             .parent(PARENT)
             // service实现类包名（默认service.impl）
             .serviceImpl("service")
+            // xml
+            .xml("xml")
             // 构建包配置对象
             .build();
 
@@ -117,6 +119,8 @@ public class CodeGenerator2 {
 
         // 实体策略配置
         strategyConfigBuilder.entityBuilder()
+            // 文件覆盖
+            .fileOverride()
             // 开启链式模型，即实体可以连续set，例：.setXxx().setXxx();
             .enableChainModel()
             // 开启lombok模型
@@ -130,18 +134,26 @@ public class CodeGenerator2 {
             // 数据库表字段映射到实体的命名策略（未指定按照 naming 执行）
             .columnNaming(NamingStrategy.underline_to_camel)
             // 开启 ActiveRecord 模式
-            .enableActiveRecord();
+            .enableActiveRecord().fileOverride();
+
+        strategyConfigBuilder.mapperBuilder()
+            // 文件覆盖
+            .fileOverride();
 
         strategyConfigBuilder.serviceBuilder()
+            // 文件覆盖
+            .fileOverride()
             // 格式化文件名
-            .convertServiceImplFileName((entityName -> entityName + ConstVal.SERVICE));
+            .convertServiceImplFileName((entityName -> entityName + ConstVal.SERVICE)).fileOverride();
 
         // 控制器属性配置构建
         strategyConfigBuilder.controllerBuilder()
+            // 文件覆盖
+            .fileOverride()
             // 开启驼峰转连字符 autoFill -> auto-fill
             .enableHyphenStyle()
             // 开启生成@RestController控制器
-            .enableRestStyle();
+            .enableRestStyle().fileOverride();
 
         StrategyConfig strategyConfig = strategyConfigBuilder.build();
 

@@ -140,6 +140,8 @@ public class CodeGenerator {
 
         // 实体策略配置
         strategyConfigBuilder.entityBuilder()
+            // 文件覆盖
+            .fileOverride()
             // 关闭生成serialVersionUID（默认true）
             // .disableSerialVersionUID()
             // 开启链式模型，即实体可以连续set，例：.setXxx().setXxx();
@@ -177,6 +179,8 @@ public class CodeGenerator {
         ;
 
         strategyConfigBuilder.mapperBuilder()
+        // 文件覆盖
+        // .fileOverride()
         // 开启 @Mapper 注解
         // .enableMapperAnnotation()
         // 开启baseResultMap
@@ -193,6 +197,8 @@ public class CodeGenerator {
         ;
 
         strategyConfigBuilder.serviceBuilder()
+        // 文件覆盖
+        // .fileOverride()
         // 格式化文件名
         // .convertServiceFileName()
         // .convertServiceImplFileName()
@@ -202,6 +208,8 @@ public class CodeGenerator {
 
         // 控制器属性配置构建
         strategyConfigBuilder.controllerBuilder()
+            // 文件覆盖
+            // .fileOverride()
             // 开启驼峰转连字符 autoFill -> auto-fill
             .enableHyphenStyle()
             // 开启生成@RestController控制器
