@@ -1,4 +1,4 @@
-package com.maxqiu.demo.ThreadPool;
+package com.maxqiu.demo;
 
 import java.util.Random;
 import java.util.concurrent.Executors;
@@ -7,10 +7,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 延迟线程
+ *
  * @author Max_Qiu
  */
-public class TestScheduledThreadPool {
-
+public class ScheduledThreadPoolDemo {
     public static void main(String[] args) throws Exception {
         ScheduledExecutorService pool = Executors.newScheduledThreadPool(5);
 
@@ -26,5 +27,4 @@ public class TestScheduledThreadPool {
 
         pool.shutdown();
     }
-
 }
