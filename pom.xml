@@ -36,6 +36,7 @@
         <module>demo-queue</module>
         <module>demo-RabbitMQ</module>
         <module>demo-Reference</module>
+        <module>demo-Shiro</module>
         <module>demo-socket1</module>
         <module>demo-socket2</module>
         <module>demo-synchronized</module>
