@@ -13,18 +13,11 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.keywords.MySqlKeyWordsHandler;
 
 /**
- * 代码生成器简化版：删除模板中的日期、删除service接口、关闭乐观锁和逻辑删除
- *
- * 以 MySQL 为例
- *
- * 1. 修改最重要的设置
- *
- * 2. 运行 generator
- *
- * 3. 删除 iservice 文件夹
- *
- * 4. 拷贝代码至自己的项目
- *
+ * 代码生成器简化版：删除模板中的日期、删除service接口、关闭乐观锁和逻辑删除<br>
+ * 以 MySQL 为例<br>
+ * 1. 修改最重要的设置<br>
+ * 2. 运行 generator<br>
+ * 3. 拷贝代码至自己的项目<br>
  * PS 代码生成后推荐格式化一下，毕竟模板中可能有多余的空行或者空格或者import顺序不一样等等
  *
  * @author Max_Qiu
@@ -120,7 +113,7 @@ public class CodeGenerator2 {
         // 实体策略配置
         strategyConfigBuilder.entityBuilder()
             // 文件覆盖
-            .fileOverride()
+            .enableFileOverride()
             // 开启链式模型，即实体可以连续set，例：.setXxx().setXxx();
             .enableChainModel()
             // 开启lombok模型
@@ -134,26 +127,26 @@ public class CodeGenerator2 {
             // 数据库表字段映射到实体的命名策略（未指定按照 naming 执行）
             .columnNaming(NamingStrategy.underline_to_camel)
             // 开启 ActiveRecord 模式
-            .enableActiveRecord().fileOverride();
+            .enableActiveRecord();
 
         strategyConfigBuilder.mapperBuilder()
             // 文件覆盖
-            .fileOverride();
+            .enableFileOverride();
 
         strategyConfigBuilder.serviceBuilder()
             // 文件覆盖
-            .fileOverride()
+            .enableFileOverride()
             // 格式化文件名
-            .convertServiceImplFileName((entityName -> entityName + ConstVal.SERVICE)).fileOverride();
+            .convertServiceImplFileName((entityName -> entityName + ConstVal.SERVICE));
 
         // 控制器属性配置构建
         strategyConfigBuilder.controllerBuilder()
             // 文件覆盖
-            .fileOverride()
+            .enableFileOverride()
             // 开启驼峰转连字符 autoFill -> auto-fill
             .enableHyphenStyle()
             // 开启生成@RestController控制器
-            .enableRestStyle().fileOverride();
+            .enableRestStyle();
 
         StrategyConfig strategyConfig = strategyConfigBuilder.build();
 

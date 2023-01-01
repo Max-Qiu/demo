@@ -11,18 +11,12 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.keywords.MySqlKeyWordsHandler;
 
 /**
- * 代码生成器
- *
- * 以 MySQL 为例
- *
- * 1. 修改最重要的设置
- *
- * 2. 确认是否需要启用乐观锁、逻辑删除，本配置默认启用（详见实体策略配置）
- *
- * 3. 运行 generator
- *
- * 4. 拷贝代码至自己的项目
- *
+ * 代码生成器<br>
+ * 以 MySQL 为例<br>
+ * 1. 修改最重要的设置<br>
+ * 2. 确认是否需要启用乐观锁、逻辑删除，本配置默认启用（详见实体策略配置）<br>
+ * 3. 运行 generator<br>
+ * 4. 拷贝代码至自己的项目<br>
  * PS 代码生成后推荐格式化一下，毕竟模板中可能有多余的空行或者空格或者import顺序不一样等等
  *
  * @author Max_Qiu
@@ -141,7 +135,7 @@ public class CodeGenerator {
         // 实体策略配置
         strategyConfigBuilder.entityBuilder()
             // 文件覆盖
-            .fileOverride()
+            .enableFileOverride()
             // 关闭生成serialVersionUID（默认true）
             // .disableSerialVersionUID()
             // 开启链式模型，即实体可以连续set，例：.setXxx().setXxx();
@@ -180,9 +174,9 @@ public class CodeGenerator {
 
         strategyConfigBuilder.mapperBuilder()
         // 文件覆盖
-        // .fileOverride()
+        // .enableFileOverride()
         // 开启 @Mapper 注解
-        // .enableMapperAnnotation()
+        // .mapperAnnotation(org.apache.ibatis.annotations.Mapper.class)
         // 开启baseResultMap
         // .enableBaseResultMap()
         // 开启baseColumnList
@@ -198,7 +192,7 @@ public class CodeGenerator {
 
         strategyConfigBuilder.serviceBuilder()
         // 文件覆盖
-        // .fileOverride()
+        // .enableFileOverride()
         // 格式化文件名
         // .convertServiceFileName()
         // .convertServiceImplFileName()
@@ -209,7 +203,7 @@ public class CodeGenerator {
         // 控制器属性配置构建
         strategyConfigBuilder.controllerBuilder()
             // 文件覆盖
-            // .fileOverride()
+            // .enableFileOverride()
             // 开启驼峰转连字符 autoFill -> auto-fill
             .enableHyphenStyle()
             // 开启生成@RestController控制器
