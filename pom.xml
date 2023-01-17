@@ -24,6 +24,7 @@
         <module>demo-DesignPattern</module>
         <module>demo-DesignPrinciple</module>
         <module>demo-Elasticsearch7</module>
+        <module>demo-Elasticsearch8</module>
         <module>demo-Encrypt-Decrypt</module>
         <module>demo-Java8-Lambda</module>
         <module>demo-Java8-Stream</module>
