@@ -10,7 +10,8 @@
 demo-Atomic | 原子类
 demo-DesignPattern | 设计模式
 demo-DesignPrinciple | 设计原则
-demo-Elasticsearch | Elasticsearch 原生 API
+demo-Elasticsearch7 | Elasticsearch7.9.3 原生 API
+demo-Elasticsearch8 | Elasticsearch8.5.3 原生 API
 demo-Encrypt-Decrypt | 加密解密
 demo-Java8-Lambda | Java8 Lambda 表达式
 demo-Java8-Stream | Java8 Stream 流处理
